@@ -1,0 +1,5 @@
+{
+  "name": "QuantaLLM",
+  "description": "On-device LLM inference for Android. Private. Fast. Free. Powered by llama.cpp.",
+  "requestFramePermissions": []
+}
