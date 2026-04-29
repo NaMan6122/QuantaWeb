@@ -1,5 +1,8 @@
+import { lazy, Suspense } from 'react';
 import { motion } from 'motion/react';
 import { Info } from 'lucide-react';
+
+const HexChipVisual = lazy(() => import('./HexChipVisual'));
 
 interface BenchmarkRow {
   device: string;
@@ -86,12 +89,19 @@ export default function Benchmarks() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-20"
+          className="mb-20 flex flex-col md:flex-row md:items-center md:justify-between gap-8"
         >
-          <h2 className="font-headline text-4xl font-bold tracking-tighter uppercase mb-4 text-primary">
-            Performance Benchmarks
-          </h2>
-          <div className="h-1 w-24 thermal-gradient" />
+          <div>
+            <h2 className="font-headline text-4xl font-bold tracking-tighter uppercase mb-4 text-primary">
+              Performance Benchmarks
+            </h2>
+            <div className="h-1 w-24 thermal-gradient" />
+          </div>
+          <Suspense fallback={null}>
+            <div className="w-48 h-48 md:w-64 md:h-64 mx-auto md:mx-0">
+              <HexChipVisual />
+            </div>
+          </Suspense>
         </motion.div>
 
         {/* Desktop Table */}

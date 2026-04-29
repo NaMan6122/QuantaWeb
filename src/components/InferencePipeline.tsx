@@ -1,4 +1,4 @@
-import { useState, type ElementType } from 'react';
+import { useState, lazy, Suspense, type ElementType } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   MessageSquare,
@@ -15,6 +15,8 @@ import {
   Gauge,
   ArrowUp,
 } from 'lucide-react';
+
+const DataStreamBg = lazy(() => import('./DataStreamBg'));
 
 /* ------------------------------------------------------------------ */
 /*  Types & data                                                       */
@@ -429,7 +431,10 @@ export default function InferencePipeline() {
   const baseDelay = 0.15;
 
   return (
-    <section id="pipeline" className="py-32 px-6 md:px-12">
+    <section id="pipeline" className="relative py-32 px-6 md:px-12">
+      <Suspense fallback={null}>
+        <DataStreamBg />
+      </Suspense>
       <div className="max-w-[1440px] mx-auto">
         {/* Header */}
         <motion.div

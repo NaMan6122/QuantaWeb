@@ -1,5 +1,7 @@
-import { useEffect, useRef, useState, useCallback } from 'react';
+import { useEffect, useRef, useState, useCallback, lazy, Suspense } from 'react';
 import { motion } from 'motion/react';
+
+const GlobeBg = lazy(() => import('./GlobeBg'));
 
 interface StatDef {
   value: string;
@@ -105,7 +107,10 @@ export default function Stats() {
   }, []);
 
   return (
-    <section className="py-24 px-6 md:px-12 border-y border-outline-variant/10 bg-black/40">
+    <section className="relative py-24 px-6 md:px-12 border-y border-outline-variant/10 bg-black/40">
+      <Suspense fallback={null}>
+        <GlobeBg />
+      </Suspense>
       <div
         ref={ref}
         className="max-w-[1440px] mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12 text-center"

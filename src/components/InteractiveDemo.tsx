@@ -1,6 +1,8 @@
-import { useEffect, useRef, useState, useCallback } from 'react';
+import { useEffect, useRef, useState, useCallback, lazy, Suspense } from 'react';
 import { motion, useInView } from 'motion/react';
-import { Smartphone, Sparkles, Download, Wifi, WifiOff } from 'lucide-react';
+import { Smartphone, Sparkles, Download, Wifi, WifiOff, Bell } from 'lucide-react';
+
+const WaveformBg = lazy(() => import('./WaveformBg'));
 
 /* ------------------------------------------------------------------ */
 /*  Data                                                               */
@@ -147,6 +149,9 @@ export default function InteractiveDemo() {
           'linear-gradient(180deg, rgba(10,10,12,1) 0%, rgba(16,16,20,1) 50%, rgba(10,10,12,1) 100%)',
       }}
     >
+      <Suspense fallback={null}>
+        <WaveformBg active={isStreaming} />
+      </Suspense>
       <div className="max-w-[1440px] mx-auto">
         {/* ---- Section header ---- */}
         <motion.div
@@ -249,14 +254,14 @@ export default function InteractiveDemo() {
           {/* CTA after completion */}
           {done && (
             <motion.a
-              href="#download"
+              href="https://github.com/NaMan6122/QuantaLLM2"
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               className="inline-flex items-center gap-2 mt-4 rounded-full bg-gradient-to-r from-primary to-secondary px-7 py-3 text-sm font-headline font-semibold text-black hover:brightness-110 transition-all"
             >
-              <Download className="w-4 h-4" />
-              Try it yourself — download QuantaLLM
+              <Bell className="w-4 h-4" />
+              Coming soon — star us on GitHub
             </motion.a>
           )}
         </div>
