@@ -1,11 +1,31 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Download, Menu, X } from 'lucide-react';
+import { Bell, Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '../lib/utils';
 
+// Preload route chunks on hover
+const preloadMap: Record<string, () => void> = {
+  '/docs': () => { import('../docs/DocsLayout'); },
+  '/models': () => { import('../pages/ModelsPage'); },
+  '/faq': () => { import('../pages/FAQPage'); },
+  '/compare': () => { import('../pages/ComparePage'); },
+  '/changelog': () => { import('../pages/ChangelogPage'); },
+};
+
+const preloaded = new Set<string>();
+
+function usePreload() {
+  return useCallback((path: string) => {
+    if (preloaded.has(path)) return;
+    preloaded.add(path);
+    preloadMap[path]?.();
+  }, []);
+}
+
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const preload = usePreload();
 
   const anchorLinks = [
     { name: 'Features', href: '#features' },
@@ -27,7 +47,7 @@ export default function Navbar() {
             QuantaLLM
           </Link>
           <span className="text-[10px] font-mono text-primary/80 border border-primary/30 rounded-full px-2 py-0.5 tracking-wide">
-            v1.3.0
+            Coming Soon
           </span>
         </motion.div>
 
@@ -44,18 +64,21 @@ export default function Navbar() {
           ))}
           <Link
             to="/docs"
+            onMouseEnter={() => preload('/docs')}
             className="font-headline text-sm font-medium tracking-tight text-on-surface-variant hover:text-white transition-colors duration-300"
           >
             Docs
           </Link>
           <Link
             to="/models"
+            onMouseEnter={() => preload('/models')}
             className="font-headline text-sm font-medium tracking-tight text-on-surface-variant hover:text-white transition-colors duration-300"
           >
             Models
           </Link>
           <Link
             to="/faq"
+            onMouseEnter={() => preload('/faq')}
             className="font-headline text-sm font-medium tracking-tight text-on-surface-variant hover:text-white transition-colors duration-300"
           >
             FAQ
@@ -73,15 +96,15 @@ export default function Navbar() {
         {/* Right side */}
         <div className="flex items-center gap-4">
           <motion.a
-            href="https://github.com/NaMan6122/QuantaLLM2/releases"
+            href="https://github.com/NaMan6122/QuantaLLM2"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="hidden md:flex thermal-gradient text-black px-6 py-2 rounded-lg font-bold font-headline text-sm tracking-tight items-center gap-2"
           >
-            Get APK
-            <Download className="w-4 h-4" />
+            Coming Soon
+            <Bell className="w-4 h-4" />
           </motion.a>
 
           {/* Mobile toggle */}
@@ -147,12 +170,12 @@ export default function Navbar() {
                 GitHub
               </a>
               <a
-                href="https://github.com/NaMan6122/QuantaLLM2/releases"
+                href="https://github.com/NaMan6122/QuantaLLM2"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="thermal-gradient text-black px-6 py-3 rounded-lg font-bold font-headline text-sm tracking-tight text-center mt-2"
               >
-                Get APK
+                Coming Soon
               </a>
             </div>
           </motion.div>
