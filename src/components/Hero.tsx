@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { motion } from 'motion/react';
-import { Download, ChevronRight, Cpu, Play, MessageSquare } from 'lucide-react';
+import { Download, ChevronRight, Cpu, Play, MessageSquare, Bell } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const NeuralMeshBackground = lazy(() => import('./NeuralMeshBackground'));
@@ -100,15 +100,15 @@ export default function Hero() {
             className="flex flex-wrap gap-4 mb-14"
           >
             <motion.a
-              href="https://github.com/NaMan6122/QuantaLLM2/releases"
+              href="https://github.com/NaMan6122/QuantaLLM2"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
               className="thermal-gradient text-black px-8 py-4 rounded-lg text-lg font-bold font-headline flex items-center gap-2 group transition-all"
             >
-              Get APK
-              <Download className="w-5 h-5 group-hover:translate-y-0.5 transition-transform" />
+              Coming Soon
+              <Bell className="w-5 h-5" />
             </motion.a>
             <Link
               to="/docs"

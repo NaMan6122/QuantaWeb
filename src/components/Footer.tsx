@@ -4,7 +4,7 @@ const GITHUB_URL = "https://github.com/NaMan6122/QuantaLLM2";
 
 export default function Footer() {
   return (
-    <footer className="bg-black w-full py-20 border-t border-white/5">
+    <footer className="bg-black/90 backdrop-blur-sm w-full py-20 border-t border-white/5">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
           <div className="col-span-1">
@@ -82,7 +82,7 @@ export default function Footer() {
             &copy; 2025 QuantaLLM. Open Source. Local. Private.
           </div>
           <div className="flex gap-8">
-            <span className="text-on-surface-variant text-[10px] font-mono uppercase tracking-[0.2em] font-bold">v1.3.0</span>
+            <span className="text-on-surface-variant text-[10px] font-mono uppercase tracking-[0.2em] font-bold">Coming Soon</span>
             <span className="text-on-surface-variant text-[10px] font-mono uppercase tracking-[0.2em] font-bold">Cloud Latency: 0ms</span>
           </div>
         </div>

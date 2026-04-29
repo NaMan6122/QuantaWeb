@@ -114,7 +114,7 @@ function AccordionItem({ item }: { item: FAQItem }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border border-white/5 rounded-2xl bg-surface-container overflow-hidden">
+    <div className="border border-white/5 rounded-2xl bg-surface-container/80 backdrop-blur-sm overflow-hidden">
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
@@ -153,7 +153,7 @@ function AccordionItem({ item }: { item: FAQItem }) {
 
 export default function FAQ() {
   return (
-    <section className="bg-[#000000] py-32 px-6 md:px-12">
+    <section className="py-32 px-6 md:px-12">
       <div className="max-w-[1440px] mx-auto">
         {/* Header */}
         <motion.div

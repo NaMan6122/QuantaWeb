@@ -242,7 +242,7 @@ export default function Models() {
           <div className="h-1 w-24 thermal-gradient mb-6" />
           <p className="font-body text-on-surface-variant text-lg max-w-2xl">
             Browse quantized GGUF models from HuggingFace Hub — all compatible with QuantaLLM.
-            Download any model to your device and load it directly in the app.
+            Browse compatible GGUF models — ready to load when QuantaLLM launches.
           </p>
         </motion.div>
 

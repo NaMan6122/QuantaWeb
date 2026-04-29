@@ -24,7 +24,7 @@ export default function Pricing() {
           <span className="thermal-text italic">ZERO COST</span>
         </h2>
         <p className="text-on-surface-variant text-xl max-w-2xl mx-auto font-light leading-relaxed">
-          QuantaLLM is free for everyone — use the prebuilt APK or build from source. No subscriptions, no paywalls, no tracking.
+          QuantaLLM will be free for everyone — get the APK or build from source. No subscriptions, no paywalls, no tracking.
         </p>
       </header>
 
@@ -40,7 +40,7 @@ export default function Pricing() {
             <div className="flex justify-between items-start mb-12">
               <div>
                 <h3 className="text-3xl font-headline font-bold mb-2 uppercase tracking-tighter">Community</h3>
-                <p className="text-on-surface-variant text-[10px] font-bold uppercase tracking-[0.2em]">Prebuilt APK — Always Free</p>
+                <p className="text-on-surface-variant text-[10px] font-bold uppercase tracking-[0.2em]">Coming Soon — Always Free</p>
               </div>
               <span className="text-4xl font-headline font-bold">$0</span>
             </div>
@@ -72,12 +72,12 @@ export default function Pricing() {
             </ul>
           </div>
           <a
-            href="https://github.com/NaMan6122/QuantaLLM2/releases"
+            href="https://github.com/NaMan6122/QuantaLLM2"
             target="_blank"
             rel="noopener noreferrer"
             className="block w-full py-4 border border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary transition-all font-headline font-bold uppercase tracking-[0.2em] text-xs text-center"
           >
-            Download APK
+            Coming Soon
           </a>
         </motion.div>
 
