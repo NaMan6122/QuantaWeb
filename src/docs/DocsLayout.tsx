@@ -1,8 +1,10 @@
 import { useState, useMemo } from "react";
 import { Link, Routes, Route, useLocation } from "react-router-dom";
-import { Menu, X, Search, ChevronLeft, ChevronRight } from "lucide-react";
+import { Menu, X, ChevronLeft, ChevronRight, Pencil } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import DocsSidebar, { sections } from "./DocsSidebar";
+import DocsSearch from "./DocsSearch";
+import TableOfContents from "./TableOfContents";
 
 import GettingStarted from "./content/GettingStarted";
 import Architecture from "./content/Architecture";
@@ -21,6 +23,20 @@ const pageTitleMap: Record<string, string> = {};
 allPages.forEach((p) => {
   pageTitleMap[p.path] = p.label;
 });
+
+const GITHUB_BASE = "https://github.com/NaMan6122/QuantaLLM2/edit/main/QuantaWeb/src/docs/content";
+const editPathMap: Record<string, string> = {
+  "/docs": "GettingStarted.tsx",
+  "/docs/getting-started": "GettingStarted.tsx",
+  "/docs/architecture": "Architecture.tsx",
+  "/docs/inference-engines": "InferenceEngines.tsx",
+  "/docs/hexagon-npu": "HexagonNPU.tsx",
+  "/docs/native-layer": "NativeLayer.tsx",
+  "/docs/aidl-service": "AIDLService.tsx",
+  "/docs/model-formats": "ModelFormats.tsx",
+  "/docs/api-reference": "APIReference.tsx",
+  "/docs/build-from-source": "BuildFromSource.tsx",
+};
 
 export default function DocsLayout() {
   const location = useLocation();
@@ -80,10 +96,9 @@ export default function DocsLayout() {
 
         <div className="flex-1" />
 
-        {/* Search placeholder */}
-        <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[var(--surface-container-high)] text-[var(--on-surface-variant)] text-sm w-56">
-          <Search size={14} />
-          <span>Search docs...</span>
+        {/* Search */}
+        <div className="hidden md:block">
+          <DocsSearch />
         </div>
       </header>
 
@@ -179,17 +194,27 @@ export default function DocsLayout() {
                 <div />
               )}
             </div>
+
+            {/* Edit on GitHub */}
+            {editPathMap[activePath] && (
+              <div className="mt-4 flex justify-end">
+                <a
+                  href={`${GITHUB_BASE}/${editPathMap[activePath]}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs text-[var(--on-surface-variant)]/60 hover:text-[var(--primary)] transition-colors"
+                >
+                  <Pencil size={12} />
+                  Edit this page on GitHub
+                </a>
+              </div>
+            )}
           </div>
         </main>
 
         {/* Right TOC placeholder (desktop only) */}
-        <aside className="hidden xl:block w-[200px] shrink-0 sticky top-14 h-[calc(100vh-3.5rem)] py-10 px-4">
-          <div className="text-xs font-headline font-semibold text-[var(--on-surface-variant)] uppercase tracking-wider mb-3">
-            On this page
-          </div>
-          <div className="text-sm text-[var(--on-surface-variant)]/50 italic">
-            No headings
-          </div>
+        <aside className="hidden xl:block w-[200px] shrink-0 sticky top-14 h-[calc(100vh-3.5rem)] py-10 px-4 overflow-y-auto">
+          <TableOfContents />
         </aside>
       </div>
     </div>
