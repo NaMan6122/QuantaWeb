@@ -11,16 +11,35 @@ import InteractiveDemo from './components/InteractiveDemo';
 import Pricing from './components/Pricing';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
+import ScrollProgress from './components/ScrollProgress';
+import BackToTop from './components/BackToTop';
 
 const DocsLayout = lazy(() => import('./docs/DocsLayout'));
 const ModelsPage = lazy(() => import('./pages/ModelsPage'));
 const FAQPage = lazy(() => import('./pages/FAQPage'));
+const ComparePage = lazy(() => import('./pages/ComparePage'));
+const ChangelogPage = lazy(() => import('./pages/ChangelogPage'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 function LoadingSpinner() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#000000]">
-      <div className="w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
+    <div className="min-h-screen bg-[#000000]">
+      {/* Skeleton navbar */}
+      <div className="h-16 border-b border-white/5 px-6 flex items-center gap-4">
+        <div className="w-28 h-5 rounded bg-white/5 animate-pulse" />
+        <div className="flex-1" />
+        <div className="w-16 h-4 rounded bg-white/5 animate-pulse" />
+        <div className="w-16 h-4 rounded bg-white/5 animate-pulse" />
+      </div>
+      {/* Skeleton content */}
+      <div className="max-w-3xl mx-auto px-6 py-16 space-y-6">
+        <div className="w-2/3 h-8 rounded bg-white/5 animate-pulse" />
+        <div className="w-full h-4 rounded bg-white/5 animate-pulse" />
+        <div className="w-5/6 h-4 rounded bg-white/5 animate-pulse" />
+        <div className="w-full h-4 rounded bg-white/5 animate-pulse" />
+        <div className="w-3/4 h-4 rounded bg-white/5 animate-pulse" />
+        <div className="w-full h-40 rounded-xl bg-white/5 animate-pulse mt-8" />
+      </div>
     </div>
   );
 }
@@ -61,7 +80,10 @@ export default function App() {
   const location = useLocation();
 
   return (
-    <Suspense fallback={<LoadingSpinner />}>
+    <>
+      <ScrollProgress />
+      <BackToTop />
+      <Suspense fallback={<LoadingSpinner />}>
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<LandingPage />} />
@@ -90,6 +112,22 @@ export default function App() {
             }
           />
           <Route
+            path="/compare"
+            element={
+              <PageWrapper>
+                <ComparePage />
+              </PageWrapper>
+            }
+          />
+          <Route
+            path="/changelog"
+            element={
+              <PageWrapper>
+                <ChangelogPage />
+              </PageWrapper>
+            }
+          />
+          <Route
             path="*"
             element={
               <PageWrapper>
@@ -100,5 +138,6 @@ export default function App() {
         </Routes>
       </AnimatePresence>
     </Suspense>
+    </>
   );
 }
