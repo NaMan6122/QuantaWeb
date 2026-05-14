@@ -1,5 +1,6 @@
 import type { ElementType } from 'react';
 import { motion } from 'motion/react';
+import { Link } from 'react-router-dom';
 import {
   ShieldCheck,
   ShieldOff,
@@ -13,6 +14,7 @@ import {
   Lock,
   Gauge,
   Code2,
+  ArrowRight,
 } from 'lucide-react';
 
 const containerVariants = {
@@ -224,6 +226,23 @@ export default function Features() {
               <ArchitectureBox label="Native" sub="JNI / C++" />
             </div>
           </motion.div>
+        </motion.div>
+
+        {/* Deep-dive CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="mt-14 text-center"
+        >
+          <Link
+            to="/features"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary/10 text-primary font-headline font-semibold text-sm hover:bg-primary/20 transition-colors group"
+          >
+            Deep dive into all features
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
         </motion.div>
       </div>
     </section>

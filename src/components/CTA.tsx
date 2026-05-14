@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { motion } from 'motion/react';
-import { Smartphone, Github, BookOpen, Bell } from 'lucide-react';
+import { Smartphone, Github, BookOpen, Bell, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const ParticleVortex = lazy(() => import('./ParticleVortex'));
@@ -98,6 +98,29 @@ export default function CTA() {
             </Link>
             <span className="text-[10px] text-on-surface-variant font-mono uppercase tracking-widest font-bold">
               Architecture & Guides
+            </span>
+          </motion.div>
+
+          {/* Features */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5 }}
+            className="flex flex-col gap-3 items-center"
+          >
+            <Link to="/features">
+              <motion.div
+                whileHover={{ scale: 1.05, y: -4 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-64 py-5 rounded-xl font-bold font-headline text-xl flex items-center justify-center gap-3 transition-all bg-surface-container text-white border border-outline-variant/30 hover:bg-surface-container-high hover:border-white/20"
+              >
+                <Sparkles className="w-6 h-6" />
+                Features
+              </motion.div>
+            </Link>
+            <span className="text-[10px] text-on-surface-variant font-mono uppercase tracking-widest font-bold">
+              Full Feature Deep-Dive
             </span>
           </motion.div>
         </div>
