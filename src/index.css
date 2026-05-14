@@ -25,6 +25,13 @@
   body {
     @apply bg-[#000000] text-white font-body antialiased selection:bg-primary/30 selection:text-white;
   }
+
+  /* Hide default cursor for custom cursor (desktop only) */
+  @media (pointer: fine) {
+    *, *::before, *::after {
+      cursor: none !important;
+    }
+  }
 }
 
 @layer utilities {
@@ -40,6 +47,15 @@
 
   .glass-overlay {
     @apply bg-surface/60 backdrop-blur-[40px];
+  }
+
+  .animate-scroll-x {
+    animation: scroll-x 20s linear infinite;
+  }
+
+  @keyframes scroll-x {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
   }
 
   .kinetic-grid {

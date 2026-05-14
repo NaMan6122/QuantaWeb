@@ -13,12 +13,14 @@ import CTA from './components/CTA';
 import Footer from './components/Footer';
 import ScrollProgress from './components/ScrollProgress';
 import BackToTop from './components/BackToTop';
+import CustomCursor from './components/CustomCursor';
 
 const DocsLayout = lazy(() => import('./docs/DocsLayout'));
 const ModelsPage = lazy(() => import('./pages/ModelsPage'));
 const FAQPage = lazy(() => import('./pages/FAQPage'));
 const ComparePage = lazy(() => import('./pages/ComparePage'));
 const ChangelogPage = lazy(() => import('./pages/ChangelogPage'));
+const FeaturesPage = lazy(() => import('./pages/FeaturesPage'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 function LoadingSpinner() {
@@ -81,12 +83,21 @@ export default function App() {
 
   return (
     <>
+      <CustomCursor />
       <ScrollProgress />
       <BackToTop />
       <Suspense fallback={<LoadingSpinner />}>
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<LandingPage />} />
+          <Route
+            path="/features"
+            element={
+              <PageWrapper>
+                <FeaturesPage />
+              </PageWrapper>
+            }
+          />
           <Route
             path="/docs/*"
             element={
