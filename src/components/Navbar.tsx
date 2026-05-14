@@ -6,6 +6,7 @@ import { cn } from '../lib/utils';
 
 // Preload route chunks on hover
 const preloadMap: Record<string, () => void> = {
+  '/features': () => { import('../pages/FeaturesPage'); },
   '/docs': () => { import('../docs/DocsLayout'); },
   '/models': () => { import('../pages/ModelsPage'); },
   '/faq': () => { import('../pages/FAQPage'); },
@@ -27,9 +28,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const preload = usePreload();
 
-  const anchorLinks = [
-    { name: 'Features', href: '#features' },
-  ];
+  const anchorLinks: { name: string; href: string }[] = [];
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-black/60 backdrop-blur-xl border-b border-white/5">
@@ -62,6 +61,13 @@ export default function Navbar() {
               {link.name}
             </a>
           ))}
+          <Link
+            to="/features"
+            onMouseEnter={() => preload('/features')}
+            className="font-headline text-sm font-medium tracking-tight text-on-surface-variant hover:text-white transition-colors duration-300"
+          >
+            Features
+          </Link>
           <Link
             to="/docs"
             onMouseEnter={() => preload('/docs')}
@@ -139,6 +145,13 @@ export default function Navbar() {
                   {link.name}
                 </a>
               ))}
+              <Link
+                to="/features"
+                onClick={() => setMobileOpen(false)}
+                className="font-headline text-base font-medium text-on-surface-variant hover:text-white transition-colors"
+              >
+                Features
+              </Link>
               <Link
                 to="/docs"
                 onClick={() => setMobileOpen(false)}
