@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { motion } from 'motion/react';
 import { Download, ChevronRight, Cpu, Play, MessageSquare, Bell } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import TypewriterText from './TypewriterText';
 
 const NeuralMeshBackground = lazy(() => import('./NeuralMeshBackground'));
 
@@ -53,9 +54,21 @@ export default function Hero() {
             variants={textVariants}
             initial="hidden"
             animate="visible"
-            className="thermal-text font-headline text-2xl md:text-3xl font-bold tracking-tight mb-8"
+            className="font-headline text-2xl md:text-3xl font-bold tracking-tight mb-8 min-h-[2.4em]"
           >
-            Zero Cloud. Zero Compromise.
+            <TypewriterText
+              texts={[
+                'Zero Cloud. Zero Compromise.',
+                'Private. Fast. On-Device.',
+                '90+ Model Architectures.',
+                'Hexagon NPU Accelerated.',
+              ]}
+              className="thermal-text"
+              cursorClassName="bg-primary"
+              typeSpeed={60}
+              eraseSpeed={30}
+              pauseAfterType={2500}
+            />
           </motion.p>
 
           <motion.p
@@ -115,6 +128,13 @@ export default function Hero() {
               className="border border-secondary px-8 py-4 rounded-lg text-lg font-bold font-headline text-secondary hover:bg-secondary/5 transition-all flex items-center gap-2"
             >
               Read the Docs
+              <ChevronRight className="w-5 h-5" />
+            </Link>
+            <Link
+              to="/features"
+              className="border border-white/15 px-8 py-4 rounded-lg text-lg font-bold font-headline text-white/80 hover:bg-white/5 hover:border-white/25 transition-all flex items-center gap-2"
+            >
+              Explore Features
               <ChevronRight className="w-5 h-5" />
             </Link>
           </motion.div>
