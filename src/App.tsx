@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { AnimatePresence, motion } from 'motion/react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -62,6 +63,14 @@ function PageWrapper({ children }: { children: React.ReactNode }) {
 function LandingPage() {
   return (
     <PageWrapper>
+      <Helmet>
+        <title>QuantaLLM — On-Device LLM Inference for Android</title>
+        <meta name="description" content="Run large language models entirely on your Android phone. Powered by llama.cpp with Hexagon NPU acceleration and ONNX Runtime — 100% offline, fully private inference on ARM64." />
+        <link rel="canonical" href="https://quantallm.dev/" />
+        <meta property="og:url" content="https://quantallm.dev/" />
+        <meta property="og:title" content="QuantaLLM — On-Device LLM Inference for Android" />
+        <meta property="og:description" content="Run LLMs entirely on your phone. Powered by llama.cpp, Hexagon NPU, and ONNX Runtime. 100% offline, fully private." />
+      </Helmet>
       <Navbar />
       <main>
         <Hero />

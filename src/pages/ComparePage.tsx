@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { Check, X, Minus } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -47,6 +48,14 @@ function Cell({ value }: { value: Support }) {
 export default function ComparePage() {
   return (
     <>
+      <Helmet>
+        <title>QuantaLLM vs MLC LLM vs llama.cpp vs Ollama — Feature Comparison</title>
+        <meta name="description" content="See how QuantaLLM compares to MLC LLM, llama.cpp Android, and Ollama across 12 feature categories including Hexagon NPU, ONNX, and AIDL support." />
+        <link rel="canonical" href="https://quantallm.dev/compare" />
+        <meta property="og:url" content="https://quantallm.dev/compare" />
+        <meta property="og:title" content="QuantaLLM vs MLC LLM vs llama.cpp vs Ollama — Feature Comparison" />
+        <meta property="og:description" content="12-category feature comparison of Android on-device LLM inference solutions. Hexagon NPU, ONNX, AIDL, and more." />
+      </Helmet>
       <Navbar />
       <main className="relative min-h-screen bg-[#000000] pt-24 pb-20 px-6">
         <Suspense fallback={null}>

@@ -33,6 +33,7 @@ import {
   Heading,
   type LucideIcon,
 } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import TypewriterText from '../components/TypewriterText';
@@ -578,6 +579,14 @@ function MarkdownShowcase() {
 export default function FeaturesPage() {
   return (
     <>
+      <Helmet>
+        <title>Features — QuantaLLM On-Device LLM for Android</title>
+        <meta name="description" content="Explore QuantaLLM's full feature set: Hexagon NPU acceleration, GGUF + ONNX support, AIDL cross-app API, and 90+ model architectures — all running offline on Android." />
+        <link rel="canonical" href="https://quantallm.dev/features" />
+        <meta property="og:url" content="https://quantallm.dev/features" />
+        <meta property="og:title" content="Features — QuantaLLM On-Device LLM for Android" />
+        <meta property="og:description" content="Hexagon NPU acceleration, GGUF + ONNX support, AIDL cross-app API, and 90+ model architectures. All offline on Android." />
+      </Helmet>
       <Navbar />
       <main className="bg-[#000000] min-h-screen relative">
         {/* Page-level ambient 3D background — subtle, fixed, non-distracting */}

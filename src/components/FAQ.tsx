@@ -163,12 +163,12 @@ export default function FAQ() {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-20"
         >
-          <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+          <h1 className="font-headline text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
             Frequently Asked{' '}
             <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
               Questions
             </span>
-          </h2>
+          </h1>
           <p className="font-body text-lg md:text-xl text-on-surface-variant max-w-2xl mx-auto">
             Everything you need to know about running LLMs on your device.
           </p>

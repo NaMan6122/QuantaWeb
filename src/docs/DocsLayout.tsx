@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import { Link, Routes, Route, useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { Menu, X, ChevronLeft, ChevronRight, Pencil } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import DocsSidebar, { sections } from "./DocsSidebar";
@@ -55,6 +56,13 @@ export default function DocsLayout() {
 
   return (
     <div className="min-h-screen bg-[var(--surface)] text-white">
+      <Helmet>
+        <title>{breadcrumb.title} — QuantaLLM Docs</title>
+        <meta name="description" content={`QuantaLLM documentation: ${breadcrumb.title}. Developer reference for on-device LLM inference on Android.`} />
+        <link rel="canonical" href={`https://quantallm.dev${activePath}`} />
+        <meta property="og:url" content={`https://quantallm.dev${activePath}`} />
+        <meta property="og:title" content={`${breadcrumb.title} — QuantaLLM Docs`} />
+      </Helmet>
       {/* Top bar */}
       <header className="sticky top-0 z-30 h-14 flex items-center gap-3 px-4 bg-[var(--surface-container)]/80 backdrop-blur border-b border-[var(--outline-variant)]">
         {/* Mobile menu */}

@@ -17,20 +17,18 @@ export default function Footer() {
           {/* Product */}
           <div className="flex flex-col gap-4">
             <span className="text-white font-bold text-xs uppercase tracking-[0.2em] mb-2">Product</span>
-            <a href="#features" className="text-on-surface-variant hover:text-primary transition-colors text-sm font-medium">
+            <Link to="/features" className="text-on-surface-variant hover:text-primary transition-colors text-sm font-medium">
               Features
-            </a>
+            </Link>
             <Link to="/models" className="text-on-surface-variant hover:text-primary transition-colors text-sm font-medium">
               Models
             </Link>
-            <a
-              href={`${GITHUB_URL}/blob/main/CHANGELOG.md`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-on-surface-variant hover:text-primary transition-colors text-sm font-medium"
-            >
+            <Link to="/changelog" className="text-on-surface-variant hover:text-primary transition-colors text-sm font-medium">
               Changelog
-            </a>
+            </Link>
+            <Link to="/compare" className="text-on-surface-variant hover:text-primary transition-colors text-sm font-medium">
+              Compare
+            </Link>
           </div>
 
           {/* Developers */}
@@ -55,7 +53,7 @@ export default function Footer() {
           {/* Project */}
           <div className="flex flex-col gap-4">
             <span className="text-white font-bold text-xs uppercase tracking-[0.2em] mb-2">Project</span>
-            <Link to="/docs/getting-started" className="text-on-surface-variant hover:text-primary transition-colors text-sm font-medium">
+            <Link to="/faq" className="text-on-surface-variant hover:text-primary transition-colors text-sm font-medium">
               Privacy
             </Link>
             <a

@@ -1,0 +1,60 @@
+# QuantaLLM
+
+> On-device LLM inference for Android. Run large language models entirely on-device — no internet required.
+
+## What is QuantaLLM?
+
+QuantaLLM is an open-source Android application that enables fully private, offline LLM inference on consumer Android devices. It uses llama.cpp as its primary inference backend and ONNX Runtime as a secondary backend, with hardware acceleration via the Qualcomm Hexagon NPU (Neural Processing Unit).
+
+All computation happens on-device. No data is transmitted, no telemetry is collected, and the app works in airplane mode.
+
+## Key Capabilities
+
+- **100% offline inference** — no cloud dependency
+- **Hexagon NPU acceleration** — 2-5x speedup over CPU-only on Snapdragon devices
+- **Dual inference backends** — llama.cpp (GGUF) and ONNX Runtime
+- **AIDL cross-app API** — other Android apps can bind to QuantaLLM as a shared inference service
+- **ARM64 optimized** — dotprod, i8mm, and bf16 native layer optimizations
+- **90+ model architectures** — Llama 3, Mistral, Phi-3, Gemma 2, Qwen 2, and more
+- **Streaming token generation** — real-time output with configurable sampling (temp, top-k, top-p, min-p)
+- **No account required** — free, open source, Apache 2.0
+
+## Hardware Requirements
+
+- Android 12 (API 31) or later; Android 13+ recommended
+- Minimum 6 GB RAM; 8 GB+ recommended
+- Best performance on Qualcomm Snapdragon 8 Gen 2 or newer (Hexagon NPU required for NPU acceleration)
+- Supported flagship devices: Samsung Galaxy S24 series, OnePlus 12, Xiaomi 14 Pro
+
+## Supported Model Formats
+
+- **GGUF** (via llama.cpp) — Q2 through Q8 quantization
+- **ONNX** (via ONNX Runtime) — with QNN compilation for Hexagon acceleration
+
+## Performance (Snapdragon 8 Gen 3, 7B Q4 model)
+
+- Prompt processing (prefill): 100–300+ tokens/second
+- Text generation: 15–30 tokens/second (CPU+NPU)
+- With Hexagon HTP: up to 40+ tokens/second on smaller models
+
+## Privacy
+
+- Zero telemetry
+- No prompt logging
+- No network requests during inference
+- Chat history stored in local encrypted SQLite database
+
+## Links
+
+- Homepage: https://quantallm.dev
+- Documentation: https://quantallm.dev/docs
+- Features: https://quantallm.dev/features
+- Models: https://quantallm.dev/models
+- FAQ: https://quantallm.dev/faq
+- Comparison: https://quantallm.dev/compare
+- GitHub: https://github.com/NaMan6122/QuantaLLM2
+- License: Apache 2.0
+
+## Current Version
+
+v2.0.0 — Dual inference engine (llama.cpp + ONNX Runtime), Hexagon NPU acceleration, AIDL cross-app service, MVVM architecture with StateFlow.

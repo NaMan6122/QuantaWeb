@@ -1,4 +1,5 @@
 import { ExternalLink } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
@@ -65,6 +66,14 @@ const GITHUB_URL = "https://github.com/NaMan6122/QuantaLLM2";
 export default function ChangelogPage() {
   return (
     <>
+      <Helmet>
+        <title>Changelog — QuantaLLM Version History</title>
+        <meta name="description" content="QuantaLLM version history — from v1.0 initial release to v2.0 with dual inference engines, Hexagon NPU acceleration, and AIDL cross-app service." />
+        <link rel="canonical" href="https://quantallm.dev/changelog" />
+        <meta property="og:url" content="https://quantallm.dev/changelog" />
+        <meta property="og:title" content="Changelog — QuantaLLM Version History" />
+        <meta property="og:description" content="QuantaLLM version history — from v1.0 initial release to v2.0 with dual inference engines and Hexagon NPU acceleration." />
+      </Helmet>
       <Navbar />
       <main className="min-h-screen bg-[#000000] pt-24 pb-20 px-6">
         <div className="max-w-3xl mx-auto">

@@ -89,6 +89,13 @@ export default function Navbar() {
           >
             FAQ
           </Link>
+          <Link
+            to="/compare"
+            onMouseEnter={() => preload('/compare')}
+            className="font-headline text-sm font-medium tracking-tight text-on-surface-variant hover:text-white transition-colors duration-300"
+          >
+            Compare
+          </Link>
           <a
             href="https://github.com/NaMan6122/QuantaLLM2"
             target="_blank"
@@ -172,6 +179,13 @@ export default function Navbar() {
                 className="font-headline text-base font-medium text-on-surface-variant hover:text-white transition-colors"
               >
                 FAQ
+              </Link>
+              <Link
+                to="/compare"
+                onClick={() => setMobileOpen(false)}
+                className="font-headline text-base font-medium text-on-surface-variant hover:text-white transition-colors"
+              >
+                Compare
               </Link>
               <a
                 href="https://github.com/NaMan6122/QuantaLLM2"
