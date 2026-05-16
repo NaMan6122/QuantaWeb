@@ -219,7 +219,7 @@ export default function Models() {
   }, [sort, debouncedQuery]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleLoadMore = () => {
-    const nextOffset = offset + PAGE_SIZE;
+    const nextOffset = models.length;
     setOffset(nextOffset);
     fetchModels(nextOffset, true);
   };
