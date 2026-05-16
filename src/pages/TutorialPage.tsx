@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState } from 'react';
+import { lazy, Suspense, useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
 import { Download, FolderOpen, Shield, Cpu, MessageSquare, ChevronRight, ChevronLeft, CheckCircle2 } from 'lucide-react';
@@ -15,8 +15,8 @@ interface Step {
   description: string;
   details: string[];
   tip?: string;
-  imageAlt: string;
-  // placeholder colour used until real screenshots are dropped in
+  // image filenames under /screenshots/ — single: ['1.png'], multi: ['1.1.png','1.2.png']
+  images: string[];
   imageBg: string;
 }
 
@@ -35,7 +35,7 @@ const steps: Step[] = [
       'Tap Install and wait for the process to complete',
     ],
     tip: 'On Android 12+ you can grant this permission per-app. When prompted, allow your browser or Files app to install.',
-    imageAlt: 'Android install unknown sources permission screen',
+    images: ['screenshot-1.1.png', 'screenshot-1.2.png'],
     imageBg: 'from-primary/20 to-primary/5',
   },
   {
@@ -45,14 +45,14 @@ const steps: Step[] = [
     description:
       'QuantaLLM needs access to your device storage to scan for GGUF model files. This is a one-time setup.',
     details: [
-      'Launch QuantaLLM after installation',
+      'Launch QuantaLLM after installation & click on the Scan Models button',
       'A permission dialog will appear requesting storage access',
       'Tap "Allow" — this lets the app scan your Downloads and Documents folders',
       'On Android 13+ select "Allow access to media" and grant Files access',
       'You can also go to Settings → Apps → QuantaLLM → Permissions to grant it manually',
     ],
     tip: 'QuantaLLM only reads model files — it never uploads anything. All inference is fully offline.',
-    imageAlt: 'Android storage permission dialog for QuantaLLM',
+    images: ['screenshot-2.png'],
     imageBg: 'from-secondary/20 to-secondary/5',
   },
   {
@@ -69,7 +69,7 @@ const steps: Step[] = [
       'QuantaLLM scans: Downloads/, Documents/, and models/ on internal + SD card storage',
     ],
     tip: 'Start with a small model — Phi-3 Mini Q4_K_M (~2.2 GB) or LLaMA 3.2 3B Q4_K_M (~1.9 GB) — to verify everything works before trying larger ones.',
-    imageAlt: 'HuggingFace model download page showing GGUF files',
+    images: ['screenshot-3.png'],
     imageBg: 'from-primary/15 to-secondary/10',
   },
   {
@@ -82,11 +82,11 @@ const steps: Step[] = [
       'Open QuantaLLM and tap the model selector at the top of the screen',
       'Your downloaded model will appear with its name, size, and quantization type',
       'Models flagged in red may exceed available RAM — choose a smaller quantization if needed',
-      'Tap the model to load it — you\'ll see a progress indicator as it initialises',
+      "Tap the model to load it — you'll see a progress indicator as it initialises",
       'On Snapdragon 8 Gen 2/3/Elite devices, Hexagon NPU offload activates automatically',
     ],
-    tip: 'If your model doesn\'t appear, tap the refresh icon in the model list to trigger a rescan.',
-    imageAlt: 'QuantaLLM model selection screen showing loaded models',
+    tip: "If your model doesn't appear, tap the refresh icon in the model list to trigger a rescan.",
+    images: ['screenshot-4.1.png', 'screenshot-4.2.png'],
     imageBg: 'from-primary/20 to-primary/5',
   },
   {
@@ -103,7 +103,7 @@ const steps: Step[] = [
       'Chat sessions are saved automatically — swipe left on a session to delete it',
     ],
     tip: 'For best results with instruction-following models, use the correct prompt format. QuantaLLM auto-detects the chat template from the GGUF metadata when available.',
-    imageAlt: 'QuantaLLM chat interface showing a streaming response',
+    images: ['screenshot-5.1.png', 'screenshot-5.2.png'],
     imageBg: 'from-secondary/20 to-primary/10',
   },
 ];
@@ -113,6 +113,100 @@ const fadeSlide = {
   center: { opacity: 1, x: 0 },
   exit: (dir: number) => ({ opacity: 0, x: dir > 0 ? -60 : 60 }),
 };
+
+// Auto-scrolling image panel — cycles through images with a smooth scroll
+function ImagePanel({ images, imageBg, stepIndex }: { images: string[]; imageBg: string; stepIndex: number }) {
+  const [imgIndex, setImgIndex] = useState(0);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  // Reset to first image whenever the step changes
+  useEffect(() => {
+    setImgIndex(0);
+  }, [stepIndex]);
+
+  // Auto-advance when there are multiple images
+  useEffect(() => {
+    if (images.length <= 1) return;
+    intervalRef.current = setInterval(() => {
+      setImgIndex(prev => (prev + 1) % images.length);
+    }, 3000);
+    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
+  }, [images, stepIndex]);
+
+  const hasReal = (src: string) => {
+    // treated as "real" once the file actually exists — we try to load it
+    return true;
+  };
+
+  return (
+    <div className={`relative rounded-2xl bg-gradient-to-br ${imageBg} border border-outline-variant/15 flex flex-col items-center justify-center overflow-hidden`}
+      style={{ minHeight: '420px' }}>
+
+      {/* Image area */}
+      <div className="relative w-52 flex-1 flex items-center justify-center my-8">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={`${stepIndex}-${imgIndex}`}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="w-full"
+          >
+            {/* Phone frame wrapper */}
+            <div className="relative w-52 mx-auto bg-surface-container rounded-[2rem] border-2 border-outline-variant/30 shadow-2xl overflow-hidden"
+              style={{ aspectRatio: '9/19' }}>
+              {/* Status bar */}
+              <div className="absolute top-0 left-0 right-0 h-7 bg-black/40 flex items-center px-4 z-10">
+                <div className="w-14 h-1.5 bg-white/20 rounded-full mx-auto" />
+              </div>
+              {/* Screenshot or placeholder */}
+              <img
+                src={`/screenshots/${images[imgIndex]}`}
+                alt={`Step screenshot ${images[imgIndex]}`}
+                className="absolute inset-0 w-full h-full object-cover"
+                onError={e => { (e.currentTarget as HTMLImageElement).style.display = 'none'; (e.currentTarget.nextElementSibling as HTMLElement).style.display = 'flex'; }}
+              />
+              {/* Fallback placeholder — shown if image missing */}
+              <div className="absolute inset-0 flex-col items-center justify-center gap-3 p-6 hidden">
+                <div className="w-10 h-10 rounded-full bg-outline-variant/20 flex items-center justify-center">
+                  <span className="text-on-surface-variant/40 font-mono text-xs">{images[imgIndex]}</span>
+                </div>
+                <div className="space-y-2 w-full mt-2">
+                  <div className="h-2 bg-outline-variant/15 rounded-full" />
+                  <div className="h-2 bg-outline-variant/10 rounded-full w-3/4 mx-auto" />
+                  <div className="h-2 bg-outline-variant/8 rounded-full w-1/2 mx-auto" />
+                </div>
+                <p className="text-[9px] text-on-surface-variant/30 font-mono text-center">Screenshot pending</p>
+              </div>
+              {/* Home bar */}
+              <div className="absolute bottom-0 left-0 right-0 h-5 flex items-center justify-center">
+                <div className="w-20 h-1 bg-white/20 rounded-full" />
+              </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Dot indicators — only shown for multi-image steps */}
+      {images.length > 1 && (
+        <div className="flex items-center gap-2 pb-5">
+          {images.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => {
+                if (intervalRef.current) clearInterval(intervalRef.current);
+                setImgIndex(i);
+              }}
+              className={`rounded-full transition-all ${i === imgIndex ? 'w-4 h-1.5 bg-primary' : 'w-1.5 h-1.5 bg-outline-variant/40'}`}
+              aria-label={`View screenshot ${i + 1}`}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function TutorialPage() {
   const [current, setCurrent] = useState(0);
@@ -163,13 +257,13 @@ export default function TutorialPage() {
           </motion.div>
 
           {/* Step indicator */}
-          <div className="flex items-center gap-2 mb-10">
+          <div className="flex items-center gap-2 mb-10 flex-wrap">
             {steps.map((s, i) => (
               <button
                 key={i}
                 onClick={() => go(i)}
                 className="flex items-center gap-2 group"
-                aria-label={`Go to step ${i + 1}`}
+                aria-label={`Go to step ${i + 1}: ${s.title}`}
               >
                 <div className={`flex items-center justify-center w-8 h-8 rounded-full border text-xs font-mono font-bold transition-all ${
                   i < current
@@ -187,11 +281,11 @@ export default function TutorialPage() {
             ))}
           </div>
 
-          {/* Main card */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+          {/* Main card — height is fully auto, no clipping */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10 items-start">
 
-            {/* Content */}
-            <div className="relative overflow-hidden min-h-[420px]">
+            {/* Content — no fixed height, grows with content */}
+            <div className="relative overflow-hidden">
               <AnimatePresence custom={direction} mode="wait">
                 <motion.div
                   key={current}
@@ -201,7 +295,6 @@ export default function TutorialPage() {
                   animate="center"
                   exit="exit"
                   transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute inset-0"
                 >
                   <div className="flex items-center gap-3 mb-6">
                     <div className="w-11 h-11 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
@@ -235,7 +328,7 @@ export default function TutorialPage() {
               </AnimatePresence>
             </div>
 
-            {/* Screenshot placeholder */}
+            {/* Image panel — auto-scrolling when multiple images */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={current}
@@ -243,40 +336,14 @@ export default function TutorialPage() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                className={`relative rounded-2xl bg-gradient-to-br ${step.imageBg} border border-outline-variant/15 flex flex-col items-center justify-center min-h-[360px] overflow-hidden`}
               >
-                {/* Phone frame */}
-                <div className="relative w-48 h-80 bg-surface-container rounded-[2rem] border-2 border-outline-variant/30 shadow-2xl flex flex-col overflow-hidden">
-                  {/* Status bar */}
-                  <div className="h-6 bg-surface-container-high flex items-center px-4 gap-2 shrink-0">
-                    <div className="w-12 h-1.5 bg-outline-variant/30 rounded-full mx-auto" />
-                  </div>
-                  {/* Screen content placeholder */}
-                  <div className="flex-1 flex flex-col items-center justify-center gap-3 p-4">
-                    <Icon className="w-10 h-10 text-primary/40" />
-                    <div className="space-y-2 w-full">
-                      <div className="h-2 bg-outline-variant/20 rounded-full" />
-                      <div className="h-2 bg-outline-variant/15 rounded-full w-3/4 mx-auto" />
-                      <div className="h-2 bg-outline-variant/10 rounded-full w-1/2 mx-auto" />
-                    </div>
-                    <p className="text-[10px] text-on-surface-variant/40 font-mono text-center mt-2">
-                      Screenshot coming soon
-                    </p>
-                  </div>
-                  {/* Home bar */}
-                  <div className="h-5 flex items-center justify-center shrink-0">
-                    <div className="w-20 h-1 bg-outline-variant/30 rounded-full" />
-                  </div>
-                </div>
-                <p className="text-[10px] text-on-surface-variant/40 font-mono mt-4 text-center max-w-[180px]">
-                  {step.imageAlt}
-                </p>
+                <ImagePanel images={step.images} imageBg={step.imageBg} stepIndex={current} />
               </motion.div>
             </AnimatePresence>
           </div>
 
           {/* Navigation */}
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between mt-4">
             <button
               onClick={prev}
               disabled={current === 0}
