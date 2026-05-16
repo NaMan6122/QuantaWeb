@@ -12,7 +12,7 @@ export default function GettingStarted() {
       </p>
 
       <p className="text-on-surface-variant leading-relaxed mb-4">
-        QuantaLLM is an open-source Android application that runs large language models entirely
+        QuantaLLM is an Android application that runs large language models entirely
         on your device. There is no cloud, no API key, no data leaving your phone. Once installed,
         the app works fully offline — on a plane, in a subway, or anywhere else without
         connectivity. This guide assumes no prior experience with on-device inference and will
@@ -171,7 +171,7 @@ export default function GettingStarted() {
         file. You can do this directly from your phone's browser.
       </p>
 
-      <CodeBlock language="text">{`https://github.com/NaMan6122/QuantaLLM2/releases`}</CodeBlock>
+      <CodeBlock language="text">{`https://github.com/NaMan6122/QuantaLLM-Releases/releases/download/v1.3.0/QuantaLLM-v1.3.0.apk`}</CodeBlock>
 
       <p className="text-on-surface-variant leading-relaxed mb-4">
         Look for the asset named{' '}
@@ -1047,13 +1047,8 @@ Keep your answers concise and include code examples when relevant."`}</CodeBlock
 
       <div className="bg-surface-container border-l-4 border-primary p-6 rounded-r-lg mb-6">
         <p className="text-on-surface-variant leading-relaxed">
-          <strong>Info:</strong> QuantaLLM is open source and actively developed. If you
-          encounter bugs, have feature requests, or want to contribute, visit the project on
-          GitHub at{' '}
-          <code className="bg-surface-container-highest px-1.5 py-0.5 rounded text-sm font-mono text-primary">
-            github.com/NaMan6122/QuantaLLM2
-          </code>
-          . Issues and pull requests are welcome.
+          <strong>Info:</strong> QuantaLLM is actively developed. If you
+          encounter bugs or have feature requests, reach out via the FAQ page or contact us directly.
         </p>
       </div>
     </div>

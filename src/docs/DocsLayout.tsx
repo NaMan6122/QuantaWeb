@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import { Link, Routes, Route, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { Menu, X, ChevronLeft, ChevronRight, Pencil } from "lucide-react";
+import { Menu, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import DocsSidebar, { sections } from "./DocsSidebar";
 import DocsSearch from "./DocsSearch";
@@ -25,19 +25,7 @@ allPages.forEach((p) => {
   pageTitleMap[p.path] = p.label;
 });
 
-const GITHUB_BASE = "https://github.com/NaMan6122/QuantaLLM2/edit/main/QuantaWeb/src/docs/content";
-const editPathMap: Record<string, string> = {
-  "/docs": "GettingStarted.tsx",
-  "/docs/getting-started": "GettingStarted.tsx",
-  "/docs/architecture": "Architecture.tsx",
-  "/docs/inference-engines": "InferenceEngines.tsx",
-  "/docs/hexagon-npu": "HexagonNPU.tsx",
-  "/docs/native-layer": "NativeLayer.tsx",
-  "/docs/aidl-service": "AIDLService.tsx",
-  "/docs/model-formats": "ModelFormats.tsx",
-  "/docs/api-reference": "APIReference.tsx",
-  "/docs/build-from-source": "BuildFromSource.tsx",
-};
+
 
 export default function DocsLayout() {
   const location = useLocation();
@@ -203,20 +191,7 @@ export default function DocsLayout() {
               )}
             </div>
 
-            {/* Edit on GitHub */}
-            {editPathMap[activePath] && (
-              <div className="mt-4 flex justify-end">
-                <a
-                  href={`${GITHUB_BASE}/${editPathMap[activePath]}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs text-[var(--on-surface-variant)]/60 hover:text-[var(--primary)] transition-colors"
-                >
-                  <Pencil size={12} />
-                  Edit this page on GitHub
-                </a>
-              </div>
-            )}
+
           </div>
         </main>
 

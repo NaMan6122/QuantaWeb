@@ -160,7 +160,7 @@ export default function HexagonNPU() {
               <td className="border-b border-outline-variant/20 py-3 px-4 text-sm">TBD</td>
               <td className="border-b border-outline-variant/20 py-3 px-4 text-sm">Snapdragon 8 Elite Gen 2</td>
               <td className="border-b border-outline-variant/20 py-3 px-4 text-sm">v81</td>
-              <td className="border-b border-outline-variant/20 py-3 px-4 text-sm">2025</td>
+              <td className="border-b border-outline-variant/20 py-3 px-4 text-sm">2026</td>
               <td className="border-b border-outline-variant/20 py-3 px-4 text-sm">Forward-compatible runtime included. Not yet released.</td>
             </tr>
           </tbody>
