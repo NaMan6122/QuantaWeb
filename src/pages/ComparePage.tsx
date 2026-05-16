@@ -22,11 +22,11 @@ const rows: Row[] = [
   { feature: '100% Offline', quantallm: 'yes', mlcllm: 'yes', llamacppAndroid: 'yes', ollama: 'yes' },
   { feature: 'Hexagon NPU Support', quantallm: 'yes', mlcllm: 'no', llamacppAndroid: 'no', ollama: 'no' },
   { feature: 'GGUF Model Format', quantallm: 'yes', mlcllm: 'no', llamacppAndroid: 'yes', ollama: 'yes' },
-  { feature: 'ONNX Runtime', quantallm: 'yes', mlcllm: 'no', llamacppAndroid: 'no', ollama: 'no' },
+  { feature: 'ONNX Runtime', quantallm: 'partial', mlcllm: 'no', llamacppAndroid: 'no', ollama: 'no' },
   { feature: 'AIDL Cross-App API', quantallm: 'yes', mlcllm: 'no', llamacppAndroid: 'no', ollama: 'no' },
   { feature: 'ARM64 Optimized', quantallm: 'yes', mlcllm: 'yes', llamacppAndroid: 'yes', ollama: 'partial' },
   { feature: 'Streaming Output', quantallm: 'yes', mlcllm: 'yes', llamacppAndroid: 'yes', ollama: 'yes' },
-  { feature: 'Open Source', quantallm: 'yes', mlcllm: 'yes', llamacppAndroid: 'yes', ollama: 'yes' },
+  { feature: 'Open Source', quantallm: 'no', mlcllm: 'yes', llamacppAndroid: 'yes', ollama: 'yes' },
   { feature: 'Desktop / Server', quantallm: 'no', mlcllm: 'yes', llamacppAndroid: 'no', ollama: 'yes' },
   { feature: 'GPU Acceleration (Android)', quantallm: 'partial', mlcllm: 'yes', llamacppAndroid: 'partial', ollama: 'no' },
   { feature: 'Multiple Concurrent Models', quantallm: 'no', mlcllm: 'no', llamacppAndroid: 'no', ollama: 'yes' },
@@ -106,7 +106,19 @@ export default function ComparePage() {
             </table>
           </div>
 
-          <p className="text-on-surface-variant/50 text-xs mt-6 text-center">
+          <div className="flex flex-wrap items-center justify-center gap-6 mt-5 mb-1">
+            <span className="flex items-center gap-2 text-xs text-on-surface-variant/70">
+              <Check className="w-3.5 h-3.5 text-emerald-400" /> Supported
+            </span>
+            <span className="flex items-center gap-2 text-xs text-on-surface-variant/70">
+              <Minus className="w-3.5 h-3.5 text-yellow-400/60" /> Under development
+            </span>
+            <span className="flex items-center gap-2 text-xs text-on-surface-variant/70">
+              <X className="w-3.5 h-3.5 text-red-400/60" /> Not supported
+            </span>
+          </div>
+
+          <p className="text-on-surface-variant/50 text-xs mt-4 text-center">
             Comparison based on publicly available information as of 2025. Features may change.
           </p>
 

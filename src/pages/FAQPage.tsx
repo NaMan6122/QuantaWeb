@@ -28,7 +28,7 @@ export default function FAQPage() {
               {"@type":"Question","name":"What is Hexagon NPU acceleration?","acceptedAnswer":{"@type":"Answer","text":"The Hexagon NPU is a dedicated AI accelerator in Qualcomm Snapdragon chipsets. QuantaLLM offloads matrix operations to it for 2-5x faster inference compared to CPU-only execution."}},
               {"@type":"Question","name":"Can other apps use QuantaLLM inference?","acceptedAnswer":{"@type":"Answer","text":"Yes. QuantaLLM exposes an AIDL service that other apps can bind to for on-device inference, enabling a shared-service model across your Android device."}},
               {"@type":"Question","name":"Is my data private?","acceptedAnswer":{"@type":"Answer","text":"Completely. All conversations and data stay on your device. QuantaLLM collects no telemetry, logs no prompts, and transmits nothing over the network."}},
-              {"@type":"Question","name":"How fast is inference?","acceptedAnswer":{"@type":"Answer","text":"On a Snapdragon 8 Gen 3 device with a 7B Q4 model, you can expect 15-30 tokens per second. Smaller models on newer hardware can exceed 40 tokens per second."}}
+              {"@type":"Question","name":"How fast is inference?","acceptedAnswer":{"@type":"Answer","text":"On a Snapdragon 8 Gen 3 device with a 7B Q4 model, you can expect 12-15 tokens per second. Smaller models on newer hardware can exceed 40 tokens per second."}}
             ]
           }
         `}</script>

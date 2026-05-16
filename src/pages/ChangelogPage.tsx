@@ -16,7 +16,7 @@ const releases: Release[] = [
     date: '2025-06-01',
     tag: 'major',
     changes: [
-      'Dual inference engine: llama.cpp + ONNX Runtime',
+      'Dual inference engine: llama.cpp (stable) + ONNX Runtime (coming soon)',
       'Hexagon NPU acceleration (Snapdragon 8 Gen 2/3/Elite)',
       'AIDL cross-app inference service',
       'Redesigned MVVM architecture with StateFlow',

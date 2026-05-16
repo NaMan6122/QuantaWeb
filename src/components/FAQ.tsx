@@ -32,9 +32,9 @@ const faqData: FAQCategory[] = [
           'QuantaLLM requires Android 12 (API 31) or later. We recommend Android 13+ for the best experience, as newer OS versions provide improved memory management and background process handling that benefit on-device inference workloads.',
       },
       {
-        question: 'Is it free or open source?',
+        question: 'Is it free to use?',
         answer:
-          'QuantaLLM offers a free tier that lets you run smaller models with no restrictions. The Pro tier unlocks larger models, higher context lengths, and priority support. The inference engine core is open source under the Apache 2.0 license, and community contributions are welcome.',
+          'QuantaLLM offers a free tier that lets you run smaller models with no restrictions. The Pro tier unlocks larger models, higher context lengths, and priority support.',
       },
     ],
   },
