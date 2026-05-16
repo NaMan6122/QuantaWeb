@@ -23,6 +23,8 @@ const ComparePage = lazy(() => import('./pages/ComparePage'));
 const ChangelogPage = lazy(() => import('./pages/ChangelogPage'));
 const FeaturesPage = lazy(() => import('./pages/FeaturesPage'));
 const NotFound = lazy(() => import('./pages/NotFound'));
+const RoadmapPage = lazy(() => import('./pages/RoadmapPage'));
+const TutorialPage = lazy(() => import('./pages/TutorialPage'));
 
 function LoadingSpinner() {
   return (
@@ -144,6 +146,22 @@ export default function App() {
             element={
               <PageWrapper>
                 <ChangelogPage />
+              </PageWrapper>
+            }
+          />
+          <Route
+            path="/roadmap"
+            element={
+              <PageWrapper>
+                <RoadmapPage />
+              </PageWrapper>
+            }
+          />
+          <Route
+            path="/tutorial"
+            element={
+              <PageWrapper>
+                <TutorialPage />
               </PageWrapper>
             }
           />
