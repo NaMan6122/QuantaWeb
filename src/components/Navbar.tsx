@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Bell, Menu, X } from 'lucide-react';
+import { Download, Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '../lib/utils';
 
@@ -12,6 +12,8 @@ const preloadMap: Record<string, () => void> = {
   '/faq': () => { import('../pages/FAQPage'); },
   '/compare': () => { import('../pages/ComparePage'); },
   '/changelog': () => { import('../pages/ChangelogPage'); },
+  '/roadmap': () => { import('../pages/RoadmapPage'); },
+  '/tutorial': () => { import('../pages/TutorialPage'); },
 };
 
 const preloaded = new Set<string>();
@@ -46,7 +48,7 @@ export default function Navbar() {
             QuantaLLM
           </Link>
           <span className="text-[10px] font-mono text-primary/80 border border-primary/30 rounded-full px-2 py-0.5 tracking-wide">
-            Coming Soon
+            v1.3.0
           </span>
         </motion.div>
 
@@ -96,28 +98,32 @@ export default function Navbar() {
           >
             Compare
           </Link>
-          <a
-            href="https://github.com/NaMan6122/QuantaLLM2"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to="/roadmap"
+            onMouseEnter={() => preload('/roadmap')}
             className="font-headline text-sm font-medium tracking-tight text-on-surface-variant hover:text-white transition-colors duration-300"
           >
-            GitHub
-          </a>
+            Roadmap
+          </Link>
+          <Link
+            to="/tutorial"
+            onMouseEnter={() => preload('/tutorial')}
+            className="font-headline text-sm font-medium tracking-tight text-on-surface-variant hover:text-white transition-colors duration-300"
+          >
+            Setup Guide
+          </Link>
         </div>
 
         {/* Right side */}
         <div className="flex items-center gap-4">
           <motion.a
-            href="https://github.com/NaMan6122/QuantaLLM2"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="https://github.com/NaMan6122/QuantaLLM-Releases/releases/download/v1.3.0/QuantaLLM-v1.3.0.apk"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="hidden md:flex thermal-gradient text-black px-6 py-2 rounded-lg font-bold font-headline text-sm tracking-tight items-center gap-2"
           >
-            Coming Soon
-            <Bell className="w-4 h-4" />
+            Download v1.3.0
+            <Download className="w-4 h-4" />
           </motion.a>
 
           {/* Mobile toggle */}
@@ -187,22 +193,27 @@ export default function Navbar() {
               >
                 Compare
               </Link>
-              <a
-                href="https://github.com/NaMan6122/QuantaLLM2"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                to="/roadmap"
                 onClick={() => setMobileOpen(false)}
                 className="font-headline text-base font-medium text-on-surface-variant hover:text-white transition-colors"
               >
-                GitHub
-              </a>
-              <a
-                href="https://github.com/NaMan6122/QuantaLLM2"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="thermal-gradient text-black px-6 py-3 rounded-lg font-bold font-headline text-sm tracking-tight text-center mt-2"
+                Roadmap
+              </Link>
+              <Link
+                to="/tutorial"
+                onClick={() => setMobileOpen(false)}
+                className="font-headline text-base font-medium text-on-surface-variant hover:text-white transition-colors"
               >
-                Coming Soon
+                Setup Guide
+              </Link>
+              <a
+                href="https://github.com/NaMan6122/QuantaLLM-Releases/releases/download/v1.3.0/QuantaLLM-v1.3.0.apk"
+                onClick={() => setMobileOpen(false)}
+                className="thermal-gradient text-black px-6 py-3 rounded-lg font-bold font-headline text-sm tracking-tight text-center mt-2 flex items-center justify-center gap-2"
+              >
+                Download v1.3.0
+                <Download className="w-4 h-4" />
               </a>
             </div>
           </motion.div>

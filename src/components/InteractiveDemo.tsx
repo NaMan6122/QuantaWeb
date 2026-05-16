@@ -254,14 +254,14 @@ export default function InteractiveDemo() {
           {/* CTA after completion */}
           {done && (
             <motion.a
-              href="https://github.com/NaMan6122/QuantaLLM2"
+              href="https://github.com/NaMan6122/QuantaLLM-Releases/releases/download/v1.3.0/QuantaLLM-v1.3.0.apk"
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               className="inline-flex items-center gap-2 mt-4 rounded-full bg-gradient-to-r from-primary to-secondary px-7 py-3 text-sm font-headline font-semibold text-black hover:brightness-110 transition-all"
             >
-              <Bell className="w-4 h-4" />
-              Coming soon — star us on GitHub
+              <Download className="w-4 h-4" />
+              Download v1.3.0 APK
             </motion.a>
           )}
         </div>

@@ -1155,7 +1155,7 @@ export default function FeaturesPage() {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <motion.a
-                href="https://github.com/NaMan6122/QuantaLLM2"
+                href="https://github.com/NaMan6122/QuantaLLM-Releases/releases/download/v1.3.0/QuantaLLM-v1.3.0.apk"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.02, y: -2 }}
