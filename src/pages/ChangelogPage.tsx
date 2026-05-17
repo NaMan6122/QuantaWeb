@@ -12,9 +12,9 @@ interface Release {
 
 const releases: Release[] = [
   {
-    version: '2.0.0',
-    date: '2025-06-01',
-    tag: 'major',
+    version: '1.3.0',
+    date: '2026-04-25',
+    tag: 'minor',
     changes: [
       'Dual inference engine: llama.cpp (stable) + ONNX Runtime (coming soon)',
       'Hexagon NPU acceleration (Snapdragon 8 Gen 2/3/Elite)',
@@ -25,7 +25,7 @@ const releases: Release[] = [
   },
   {
     version: '1.2.0',
-    date: '2025-03-15',
+    date: '2026-03-15',
     tag: 'minor',
     changes: [
       'Added GGUF model scanning and metadata extraction',
@@ -35,7 +35,7 @@ const releases: Release[] = [
   },
   {
     version: '1.1.0',
-    date: '2025-01-20',
+    date: '2026-01-20',
     tag: 'minor',
     changes: [
       'Added model download from HuggingFace repositories',
@@ -45,7 +45,7 @@ const releases: Release[] = [
   },
   {
     version: '1.0.0',
-    date: '2024-11-10',
+    date: '2025-11-10',
     tag: 'major',
     changes: [
       'Initial release with llama.cpp backend',

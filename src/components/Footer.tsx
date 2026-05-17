@@ -48,6 +48,9 @@ export default function Footer() {
             <Link to="/faq" className="text-on-surface-variant hover:text-primary transition-colors text-sm font-medium">
               FAQ
             </Link>
+            <Link to="/privacy" className="text-on-surface-variant hover:text-primary transition-colors text-sm font-medium">
+              Privacy Policy
+            </Link>
           </div>
 
           {/* Contact */}
@@ -82,8 +85,13 @@ export default function Footer() {
         </div>
 
         <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="text-on-surface-variant text-xs font-medium tracking-wide">
-            &copy; 2026 QuantaLLM. Local. Private.
+          <div className="flex items-center gap-6">
+            <div className="text-on-surface-variant text-xs font-medium tracking-wide">
+              &copy; 2026 QuantaLLM by HyveMind
+            </div>
+            <Link to="/privacy" className="text-on-surface-variant hover:text-primary text-xs transition-colors">
+              Privacy Policy
+            </Link>
           </div>
           <div className="flex gap-8">
             <span className="text-on-surface-variant text-[10px] font-mono uppercase tracking-[0.2em] font-bold">v1.3.0 Live</span>

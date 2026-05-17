@@ -17,7 +17,7 @@ export default function Pricing() {
     <section id="pricing" className="py-32 px-6 md:px-12 max-w-[1440px] mx-auto">
       <header className="mb-24 text-center">
         <div className="inline-block px-3 py-1 rounded-sm bg-surface-container-highest text-primary font-mono text-[10px] tracking-[0.2em] uppercase mb-6 font-bold">
-          Launching Soon
+          Download v1.3.0
         </div>
         <h2 className="text-6xl md:text-7xl font-bold font-headline tracking-tighter mb-8 leading-[0.9]">
           BUILT FOR<br />

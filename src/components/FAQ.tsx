@@ -104,7 +104,7 @@ const faqData: FAQCategory[] = [
       {
         question: 'How fast is inference?',
         answer:
-          'Inference speed depends on your hardware and model choice. On a Snapdragon 8 Gen 3 device with a 7B Q4 model, you can expect 15-30 tokens per second for generation. Prompt processing (prefill) typically runs at 100-300+ tokens per second. Smaller models on newer hardware can exceed 40 tokens per second.',
+          'Inference speed depends on your hardware and model choice. On a Snapdragon 8 Gen 3 device with a 7B Q4 model, you can expect 12-15 tokens per second for generation. Prompt processing (prefill) typically runs at 100-300+ tokens per second. Smaller models on newer hardware can exceed 40 tokens per second.',
       },
     ],
   },

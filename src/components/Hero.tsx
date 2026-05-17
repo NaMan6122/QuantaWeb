@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { motion } from 'motion/react';
-import { Download, ChevronRight, Cpu, Play, MessageSquare } from 'lucide-react';
+import { Download, ChevronRight, Cpu, Play, MessageSquare, WifiOff, ShieldCheck, Smartphone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import TypewriterText from './TypewriterText';
 
@@ -49,12 +49,23 @@ export default function Hero() {
             <span className="text-on-surface-variant">for Android</span>
           </motion.h1>
 
+          {/* Consumer-facing value line — static, always visible, targets layman search queries */}
           <motion.p
             custom={1}
             variants={textVariants}
             initial="hidden"
             animate="visible"
-            className="font-headline text-2xl md:text-3xl font-bold tracking-tight mb-8 min-h-[2.4em]"
+            className="font-headline text-xl md:text-2xl font-semibold tracking-tight mb-3 text-white/90"
+          >
+            Run AI on your phone. No internet. No cloud. No data leaving your device.
+          </motion.p>
+
+          <motion.p
+            custom={2}
+            variants={textVariants}
+            initial="hidden"
+            animate="visible"
+            className="font-headline text-lg md:text-xl font-bold tracking-tight mb-8 min-h-[2em]"
           >
             <TypewriterText
               texts={[
@@ -71,21 +82,40 @@ export default function Hero() {
             />
           </motion.p>
 
+          {/* Trust badges — offline / private / Android */}
+          <motion.div
+            custom={3}
+            variants={textVariants}
+            initial="hidden"
+            animate="visible"
+            className="flex flex-wrap gap-3 mb-6"
+          >
+            <span className="flex items-center gap-1.5 text-xs font-mono text-primary/90 border border-primary/20 bg-primary/5 rounded-full px-3 py-1">
+              <WifiOff className="w-3 h-3" /> Works Offline
+            </span>
+            <span className="flex items-center gap-1.5 text-xs font-mono text-primary/90 border border-primary/20 bg-primary/5 rounded-full px-3 py-1">
+              <ShieldCheck className="w-3 h-3" /> 100% Private
+            </span>
+            <span className="flex items-center gap-1.5 text-xs font-mono text-primary/90 border border-primary/20 bg-primary/5 rounded-full px-3 py-1">
+              <Smartphone className="w-3 h-3" /> Android 12+
+            </span>
+          </motion.div>
+
           <motion.p
-            custom={2}
+            custom={4}
             variants={textVariants}
             initial="hidden"
             animate="visible"
             className="font-body text-lg text-on-surface-variant max-w-xl mb-8 leading-relaxed"
           >
-            QuantaLLM runs large language models entirely on your phone. Powered
-            by llama.cpp with Snapdragon Hexagon NPU acceleration and ONNX
-            Runtime support (coming soon) -- 100% offline, fully private inference on ARM64.
+            QuantaLLM runs large language models entirely on your phone — even in airplane mode.
+            Powered by llama.cpp with Snapdragon Hexagon NPU acceleration and ONNX
+            Runtime support (coming soon). Zero cloud, zero tracking, zero compromise.
           </motion.p>
 
           {/* Powered by badges */}
           <motion.div
-            custom={3}
+            custom={5}
             variants={textVariants}
             initial="hidden"
             animate="visible"
@@ -106,11 +136,11 @@ export default function Hero() {
 
           {/* CTA buttons */}
           <motion.div
-            custom={4}
+            custom={6}
             variants={textVariants}
             initial="hidden"
             animate="visible"
-            className="flex flex-wrap gap-4 mb-14"
+            className="flex flex-wrap gap-4 mb-4"
           >
             <motion.a
               href="https://github.com/NaMan6122/QuantaLLM-Releases/releases/download/v1.3.0/QuantaLLM-v1.3.0.apk"
@@ -137,9 +167,23 @@ export default function Hero() {
             </Link>
           </motion.div>
 
+          {/* Sideload helper */}
+          <motion.p
+            custom={7}
+            variants={textVariants}
+            initial="hidden"
+            animate="visible"
+            className="text-xs text-on-surface-variant mb-10"
+          >
+            New to sideloading?{' '}
+            <Link to="/tutorial" className="text-primary hover:underline">
+              How to install the APK on Android →
+            </Link>
+          </motion.p>
+
           {/* How it works mini-steps */}
           <motion.div
-            custom={5}
+            custom={8}
             variants={textVariants}
             initial="hidden"
             animate="visible"

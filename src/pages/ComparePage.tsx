@@ -119,7 +119,7 @@ export default function ComparePage() {
           </div>
 
           <p className="text-on-surface-variant/50 text-xs mt-4 text-center">
-            Comparison based on publicly available information as of 2025. Features may change.
+            Comparison based on publicly available information as of 2026. Features may change.
           </p>
 
           <div className="mt-12 text-center">
