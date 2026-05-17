@@ -51,8 +51,8 @@ export default function ComparePage() {
       <Helmet>
         <title>QuantaLLM vs MLC LLM vs llama.cpp vs Ollama — Feature Comparison</title>
         <meta name="description" content="See how QuantaLLM compares to MLC LLM, llama.cpp Android, and Ollama across 12 feature categories including Hexagon NPU, ONNX, and AIDL support." />
-        <link rel="canonical" href="https://quantallm.dev/compare" />
-        <meta property="og:url" content="https://quantallm.dev/compare" />
+        <link rel="canonical" href="https://quanta-web-pi.vercel.app/compare" />
+        <meta property="og:url" content="https://quanta-web-pi.vercel.app/compare" />
         <meta property="og:title" content="QuantaLLM vs MLC LLM vs llama.cpp vs Ollama — Feature Comparison" />
         <meta property="og:description" content="12-category feature comparison of Android on-device LLM inference solutions. Hexagon NPU, ONNX, AIDL, and more." />
       </Helmet>

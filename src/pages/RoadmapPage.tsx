@@ -116,8 +116,8 @@ export default function RoadmapPage() {
       <Helmet>
         <title>Roadmap & Contact — QuantaLLM</title>
         <meta name="description" content="See what's actively being built in QuantaLLM — ONNX Runtime, QNN acceleration, in-app model downloader, multimodal support, and more. Get in touch with the developer." />
-        <link rel="canonical" href="https://quantallm.dev/roadmap" />
-        <meta property="og:url" content="https://quantallm.dev/roadmap" />
+        <link rel="canonical" href="https://quanta-web-pi.vercel.app/roadmap" />
+        <meta property="og:url" content="https://quanta-web-pi.vercel.app/roadmap" />
         <meta property="og:title" content="Roadmap & Contact — QuantaLLM" />
         <meta property="og:description" content="Active development, upcoming features, and how to reach the developer behind QuantaLLM." />
       </Helmet>

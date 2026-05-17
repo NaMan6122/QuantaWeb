@@ -46,12 +46,12 @@ All computation happens on-device. No data is transmitted, no telemetry is colle
 
 ## Links
 
-- Homepage: https://quantallm.dev
-- Documentation: https://quantallm.dev/docs
-- Features: https://quantallm.dev/features
-- Models: https://quantallm.dev/models
-- FAQ: https://quantallm.dev/faq
-- Comparison: https://quantallm.dev/compare
+- Homepage: https://quanta-web-pi.vercel.app
+- Documentation: https://quanta-web-pi.vercel.app/docs
+- Features: https://quanta-web-pi.vercel.app/features
+- Models: https://quanta-web-pi.vercel.app/models
+- FAQ: https://quanta-web-pi.vercel.app/faq
+- Comparison: https://quanta-web-pi.vercel.app/compare
 - GitHub: https://github.com/NaMan6122/QuantaLLM2
 - License: Apache 2.0
 

@@ -227,8 +227,8 @@ export default function TutorialPage() {
       <Helmet>
         <title>Setup Guide — QuantaLLM</title>
         <meta name="description" content="Step-by-step guide to installing QuantaLLM, granting storage permission, adding GGUF models, and running your first on-device inference." />
-        <link rel="canonical" href="https://quantallm.dev/tutorial" />
-        <meta property="og:url" content="https://quantallm.dev/tutorial" />
+        <link rel="canonical" href="https://quanta-web-pi.vercel.app/tutorial" />
+        <meta property="og:url" content="https://quanta-web-pi.vercel.app/tutorial" />
         <meta property="og:title" content="Setup Guide — QuantaLLM" />
         <meta property="og:description" content="Install QuantaLLM, grant storage access, download a GGUF model, and start chatting — fully offline on your Android device." />
       </Helmet>

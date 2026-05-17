@@ -8,7 +8,7 @@ export default function PrivacyPage() {
       <Helmet>
         <title>Privacy Policy — QuantaLLM</title>
         <meta name="description" content="QuantaLLM's privacy policy. All inference is 100% on-device. No data is collected, stored, or transmitted. Your conversations never leave your phone." />
-        <link rel="canonical" href="https://quantallm.dev/privacy" />
+        <link rel="canonical" href="https://quanta-web-pi.vercel.app/privacy" />
       </Helmet>
       <Navbar />
       <main className="max-w-3xl mx-auto px-6 md:px-12 pt-40 pb-32">
@@ -51,7 +51,7 @@ export default function PrivacyPage() {
           <div>
             <h2 className="font-headline text-xl font-bold text-white mb-3">This website</h2>
             <p>
-              The QuantaLLM website (<a href="https://quantallm.dev" className="text-primary hover:underline">quantallm.dev</a>) uses no cookies and no third-party analytics. Standard server access logs may be retained by the hosting provider (Vercel) per their own privacy policy.
+              The QuantaLLM website (<a href="https://quanta-web-pi.vercel.app" className="text-primary hover:underline">quanta-web-pi.vercel.app</a>) uses no cookies and no third-party analytics. Standard server access logs may be retained by the hosting provider (Vercel) per their own privacy policy.
             </p>
           </div>
 

@@ -12,8 +12,8 @@ export default function FAQPage() {
       <Helmet>
         <title>FAQ — QuantaLLM On-Device LLM Inference</title>
         <meta name="description" content="Answers to common questions about QuantaLLM — hardware compatibility, model formats, battery usage, privacy, and the AIDL cross-app inference API." />
-        <link rel="canonical" href="https://quantallm.dev/faq" />
-        <meta property="og:url" content="https://quantallm.dev/faq" />
+        <link rel="canonical" href="https://quanta-web-pi.vercel.app/faq" />
+        <meta property="og:url" content="https://quanta-web-pi.vercel.app/faq" />
         <meta property="og:title" content="FAQ — QuantaLLM On-Device LLM Inference" />
         <meta property="og:description" content="Answers to common questions about QuantaLLM — hardware compatibility, model formats, battery usage, privacy, and the AIDL cross-app inference API." />
         <script type="application/ld+json">{`

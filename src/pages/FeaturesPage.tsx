@@ -582,8 +582,8 @@ export default function FeaturesPage() {
       <Helmet>
         <title>Features — QuantaLLM On-Device LLM for Android</title>
         <meta name="description" content="Explore QuantaLLM's full feature set: Hexagon NPU acceleration, GGUF + ONNX support, AIDL cross-app API, and 90+ model architectures — all running offline on Android." />
-        <link rel="canonical" href="https://quantallm.dev/features" />
-        <meta property="og:url" content="https://quantallm.dev/features" />
+        <link rel="canonical" href="https://quanta-web-pi.vercel.app/features" />
+        <meta property="og:url" content="https://quanta-web-pi.vercel.app/features" />
         <meta property="og:title" content="Features — QuantaLLM On-Device LLM for Android" />
         <meta property="og:description" content="Hexagon NPU acceleration, GGUF + ONNX support, AIDL cross-app API, and 90+ model architectures. All offline on Android." />
       </Helmet>

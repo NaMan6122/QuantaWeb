@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://quantallm.dev/sitemap.xml
+Sitemap: https://quanta-web-pi.vercel.app/sitemap.xml

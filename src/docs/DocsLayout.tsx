@@ -47,8 +47,8 @@ export default function DocsLayout() {
       <Helmet>
         <title>{breadcrumb.title} — QuantaLLM Docs</title>
         <meta name="description" content={`QuantaLLM documentation: ${breadcrumb.title}. Developer reference for on-device LLM inference on Android.`} />
-        <link rel="canonical" href={`https://quantallm.dev${activePath}`} />
-        <meta property="og:url" content={`https://quantallm.dev${activePath}`} />
+        <link rel="canonical" href={`https://quanta-web-pi.vercel.app${activePath}`} />
+        <meta property="og:url" content={`https://quanta-web-pi.vercel.app${activePath}`} />
         <meta property="og:title" content={`${breadcrumb.title} — QuantaLLM Docs`} />
       </Helmet>
       {/* Top bar */}

@@ -69,8 +69,8 @@ export default function ChangelogPage() {
       <Helmet>
         <title>Changelog — QuantaLLM Version History</title>
         <meta name="description" content="QuantaLLM version history — from v1.0 initial release to v2.0 with dual inference engines, Hexagon NPU acceleration, and AIDL cross-app service." />
-        <link rel="canonical" href="https://quantallm.dev/changelog" />
-        <meta property="og:url" content="https://quantallm.dev/changelog" />
+        <link rel="canonical" href="https://quanta-web-pi.vercel.app/changelog" />
+        <meta property="og:url" content="https://quanta-web-pi.vercel.app/changelog" />
         <meta property="og:title" content="Changelog — QuantaLLM Version History" />
         <meta property="og:description" content="QuantaLLM version history — from v1.0 initial release to v2.0 with dual inference engines and Hexagon NPU acceleration." />
       </Helmet>

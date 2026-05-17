@@ -231,13 +231,13 @@ function LandingPage() {
       <Helmet>
         <title>QuantaLLM — Run AI on Your Phone Without Internet | On-Device LLM for Android</title>
         <meta name="description" content="Run AI on your Android phone with no internet. QuantaLLM runs large language models 100% offline — no cloud, no tracking, works in airplane mode. Free download. Powered by llama.cpp + Hexagon NPU." />
-        <link rel="canonical" href="https://quantallm.dev/" />
-        <meta property="og:url" content="https://quantallm.dev/" />
+        <link rel="canonical" href="https://quanta-web-pi.vercel.app/" />
+        <meta property="og:url" content="https://quanta-web-pi.vercel.app/" />
         <meta property="og:title" content="QuantaLLM — Run AI on Your Phone Without Internet" />
         <meta property="og:description" content="Run AI models 100% offline on your Android phone. No internet, no cloud, no tracking. Free download. Powered by llama.cpp + Hexagon NPU." />
-        <meta property="og:image" content="https://quantallm.dev/og-image.png" />
+        <meta property="og:image" content="https://quanta-web-pi.vercel.app/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://quantallm.dev/og-image.png" />
+        <meta name="twitter:image" content="https://quanta-web-pi.vercel.app/og-image.png" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(howToSchema)}</script>
       </Helmet>
