@@ -48,7 +48,7 @@ export default function Navbar() {
             QuantaLLM
           </Link>
           <span className="text-[10px] font-mono text-primary/80 border border-primary/30 rounded-full px-2 py-0.5 tracking-wide">
-            v1.3.0
+            v2.0.0
           </span>
         </motion.div>
 
@@ -85,11 +85,11 @@ export default function Navbar() {
             Models
           </Link>
           <Link
-            to="/faq"
-            onMouseEnter={() => preload('/faq')}
+            to="/changelog"
+            onMouseEnter={() => preload('/changelog')}
             className="font-headline text-sm font-medium tracking-tight text-on-surface-variant hover:text-white transition-colors duration-300"
           >
-            FAQ
+            Changelog
           </Link>
           <Link
             to="/compare"
@@ -106,6 +106,13 @@ export default function Navbar() {
             Roadmap
           </Link>
           <Link
+            to="/faq"
+            onMouseEnter={() => preload('/faq')}
+            className="font-headline text-sm font-medium tracking-tight text-on-surface-variant hover:text-white transition-colors duration-300"
+          >
+            FAQ
+          </Link>
+          <Link
             to="/tutorial"
             onMouseEnter={() => preload('/tutorial')}
             className="font-headline text-sm font-medium tracking-tight text-on-surface-variant hover:text-white transition-colors duration-300"
@@ -117,12 +124,12 @@ export default function Navbar() {
         {/* Right side */}
         <div className="flex items-center gap-4">
           <motion.a
-            href="https://github.com/NaMan6122/QuantaLLM-Releases/releases/download/v1.3.0/QuantaLLM-v1.3.0.apk"
+            href="https://github.com/NaMan6122/QuantaLLM-Releases/releases/download/v2.0.0/QuantaLLM-v2.0.0.apk"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="hidden md:flex thermal-gradient text-black px-6 py-2 rounded-lg font-bold font-headline text-sm tracking-tight items-center gap-2"
           >
-            Download v1.3.0
+            Download v2.0.0
             <Download className="w-4 h-4" />
           </motion.a>
 
@@ -180,11 +187,11 @@ export default function Navbar() {
                 Models
               </Link>
               <Link
-                to="/faq"
+                to="/changelog"
                 onClick={() => setMobileOpen(false)}
                 className="font-headline text-base font-medium text-on-surface-variant hover:text-white transition-colors"
               >
-                FAQ
+                Changelog
               </Link>
               <Link
                 to="/compare"
@@ -201,6 +208,13 @@ export default function Navbar() {
                 Roadmap
               </Link>
               <Link
+                to="/faq"
+                onClick={() => setMobileOpen(false)}
+                className="font-headline text-base font-medium text-on-surface-variant hover:text-white transition-colors"
+              >
+                FAQ
+              </Link>
+              <Link
                 to="/tutorial"
                 onClick={() => setMobileOpen(false)}
                 className="font-headline text-base font-medium text-on-surface-variant hover:text-white transition-colors"
@@ -208,11 +222,11 @@ export default function Navbar() {
                 Setup Guide
               </Link>
               <a
-                href="https://github.com/NaMan6122/QuantaLLM-Releases/releases/download/v1.3.0/QuantaLLM-v1.3.0.apk"
-                onClick={() => setMobileOpen(false)}
-                className="thermal-gradient text-black px-6 py-3 rounded-lg font-bold font-headline text-sm tracking-tight text-center mt-2 flex items-center justify-center gap-2"
-              >
-                Download v1.3.0
+              href="https://github.com/NaMan6122/QuantaLLM-Releases/releases/download/v2.0.0/QuantaLLM-v2.0.0.apk"
+              onClick={() => setMobileOpen(false)}
+              className="thermal-gradient text-black px-6 py-3 rounded-lg font-bold font-headline text-sm tracking-tight text-center mt-2 flex items-center justify-center gap-2"
+            >
+              Download v2.0.0
                 <Download className="w-4 h-4" />
               </a>
             </div>
