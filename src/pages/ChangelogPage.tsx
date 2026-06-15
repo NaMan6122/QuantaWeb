@@ -12,6 +12,84 @@ interface Release {
 
 const releases: Release[] = [
   {
+    version: '2.0.0',
+    date: '2026-06-15',
+    tag: 'major',
+    changes: [
+      'Bottom navigation with 4 tabs: Dashboard, Chat, Playground, Analytics',
+      'Dashboard — system health monitor, active model card with real-time metrics, model library, quick actions',
+      'Playground tab — full LLM sampling controls: temperature, top-K, top-P, min-P, repeat/frequency/presence penalties, seed',
+      'Analytics tab — live token speed chart with pinch-to-zoom, inference history, backend telemetry',
+      'ONNX Runtime CPU Execution Provider (live) and QNN NPU Execution Provider (Snapdragon)',
+      'Quantized ONNX model support alongside GGUF — dual engine architecture, hot-swappable',
+      'QuantaLLM SDK v1.0.0 — inference SDK with license key validation, 3 modules: core, llamacpp, onnx',
+      'Developer tier with AIDL cross-app inference API — bind and call from any Android app',
+      'Hexagon DSP tuning controls: NDEV/NHVX threading, verbose/profiling modes, Safe/Aggressive presets',
+      'Theme system: System/Dark/Light with Material You theming',
+      'Prompt library with auto-detected chat templates from GGUF metadata',
+      'Model Explorer — browse scanned models with size, format, and backend compatibility info',
+    ],
+  },
+  {
+    version: '1.8.0',
+    date: '2026-05-30',
+    tag: 'minor',
+    changes: [
+      'Playground tab — collapsible Advanced Sampling section with all sampler parameters',
+      'Backend selection: CPU, Hexagon, ONNX (CPU), ONNX (QNN/NPU) with auto-capability detection',
+      'Performance Analytics screen — SpeedChart with gesture zoom/pan, live metrics, inference records',
+      'Hexagon DSP tuning UI with preset system and real-time NDEV/NHVX display',
+      'Unlimited token mode toggle — open-ended generation using EOG detection',
+      'Chat screen with multi-turn conversation UI, session management, and KV cache retention',
+      'App-level settings: theme cycling, haptic feedback, model/ONNX folder import',
+    ],
+  },
+  {
+    version: '1.7.0',
+    date: '2026-05-15',
+    tag: 'minor',
+    changes: [
+      'ONNX Runtime QNN Execution Provider — NPU offload via Qualcomm AI Engine Direct',
+      'Snapdragon HTP backend for ONNX models (v68-v81) — graph-level partitioning with CPU fallback',
+      '4-way backend architecture: CPU + Hexagon (llama.cpp) + ONNX CPU + ONNX QNN',
+      'Auto-detection of QNN runtime support via ChipsetDetector',
+      'Release build with full NPU acceleration pipeline',
+    ],
+  },
+  {
+    version: '1.6.0',
+    date: '2026-05-01',
+    tag: 'patch',
+    changes: [
+      'ONNX Runtime CPU Execution Provider — ARM64 NEON vectorized inference',
+      'ONNX model directory scanning (.onnx + genai_config.json bundles)',
+      'Autoregressive token generation with KV-cache management on ONNX backend',
+      'Internal experimentation framework for ONNX vs GGUF benchmark comparisons',
+    ],
+  },
+  {
+    version: '1.5.0',
+    date: '2026-04-20',
+    tag: 'patch',
+    changes: [
+      'ONNX Runtime (ORT GenAI v0.12.2) integration foundations',
+      'Internal test infrastructure for dual-engine architecture',
+      'Native code scaffolding for ONNX session management',
+    ],
+  },
+  {
+    version: '1.4.0',
+    date: '2026-04-10',
+    tag: 'minor',
+    changes: [
+      'Bottom navigation bar with 4 tabs: Dashboard, Chat, Settings, Analytics',
+      'Dashboard screen — system health panel, active model card with live metrics, model library',
+      'Model Scanner with GGUF + ONNX directory support',
+      'Model selector dialog with format badges (GGUF/ONNX) and file size display',
+      'Theme toggle: System/Dark/Light with Material You dynamic colors',
+    ],
+  },
+  {
     version: '1.3.0',
     date: '2026-04-25',
     tag: 'minor',
@@ -68,11 +146,11 @@ export default function ChangelogPage() {
     <>
       <Helmet>
         <title>Changelog — QuantaLLM Version History</title>
-        <meta name="description" content="QuantaLLM version history — from v1.0 initial release to v2.0 with dual inference engines, Hexagon NPU acceleration, and AIDL cross-app service." />
+        <meta name="description" content="QuantaLLM version history — from v1.0 initial release to v2.0 with ONNX QNN NPU, Playground, Analytics, and the QuantaLLM SDK." />
         <link rel="canonical" href="https://quanta-web-pi.vercel.app/changelog" />
         <meta property="og:url" content="https://quanta-web-pi.vercel.app/changelog" />
         <meta property="og:title" content="Changelog — QuantaLLM Version History" />
-        <meta property="og:description" content="QuantaLLM version history — from v1.0 initial release to v2.0 with dual inference engines and Hexagon NPU acceleration." />
+        <meta property="og:description" content="QuantaLLM version history — from v1.0 initial release to v2.0 with ONNX QNN NPU acceleration and the QuantaLLM SDK." />
       </Helmet>
       <Navbar />
       <main className="min-h-screen bg-[#000000] pt-24 pb-20 px-6">
