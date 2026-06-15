@@ -225,12 +225,56 @@ export default function TutorialPage() {
   return (
     <>
       <Helmet>
-        <title>Setup Guide — QuantaLLM</title>
-        <meta name="description" content="Step-by-step guide to installing QuantaLLM, granting storage permission, adding GGUF models, and running your first on-device inference." />
+        <title>How to Run AI on Android Offline — QuantaLLM Setup Guide</title>
+        <meta name="description" content="Step-by-step guide to install QuantaLLM and run AI models 100% offline on your Android phone. Download APK, add a GGUF model, and start chatting — no internet needed." />
         <link rel="canonical" href="https://quanta-web-pi.vercel.app/tutorial" />
         <meta property="og:url" content="https://quanta-web-pi.vercel.app/tutorial" />
-        <meta property="og:title" content="Setup Guide — QuantaLLM" />
+        <meta property="og:title" content="How to Run AI on Android Offline — QuantaLLM Setup Guide" />
         <meta property="og:description" content="Install QuantaLLM, grant storage access, download a GGUF model, and start chatting — fully offline on your Android device." />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "HowTo",
+          "name": "How to Run AI on Your Android Phone Offline with QuantaLLM",
+          "description": "Install QuantaLLM and run large language models 100% offline on your Android device in five steps. No internet required.",
+          "totalTime": "PT10M",
+          "supply": [
+            { "@type": "HowToSupply", "name": "Android 12+ device with 8 GB RAM" },
+            { "@type": "HowToSupply", "name": "QuantaLLM APK (v1.3.0)" },
+            { "@type": "HowToSupply", "name": "GGUF model file (e.g. Phi-3 Mini Q4_K_M)" }
+          ],
+          "step": [
+            {
+              "@type": "HowToStep",
+              "name": "Download & Install the APK",
+              "text": "Download QuantaLLM-v1.3.0.apk, enable 'Install from unknown sources' in Settings → Security, then open the APK from your Files app and tap Install.",
+              "position": 1
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Grant Storage Permission",
+              "text": "Launch QuantaLLM and tap 'Scan Models'. When the permission dialog appears, tap Allow to let the app scan your Downloads and Documents folders for model files.",
+              "position": 2
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Add a GGUF Model to Your Device",
+              "text": "Open huggingface.co in your browser, search for a model with 'GGUF' (e.g. 'Phi-3 Mini GGUF'), pick a Q4_K_M quantization, and download the .gguf file to your Downloads folder.",
+              "position": 3
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Load the Model in QuantaLLM",
+              "text": "Open QuantaLLM and tap the model selector. Your downloaded model will appear — tap it to load. On Snapdragon 8 Gen 2/3/Elite devices, Hexagon NPU acceleration activates automatically.",
+              "position": 4
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Start Chatting Offline",
+              "text": "Tap the chat input and type your first message. Responses stream token by token entirely on your device — no internet required. Adjust temperature, top-k, and top-p from the settings panel.",
+              "position": 5
+            }
+          ]
+        })}</script>
       </Helmet>
       <Navbar />
       <main className="relative min-h-screen bg-[#000000] pt-28 pb-24 px-6">
