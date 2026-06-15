@@ -14,9 +14,9 @@ interface StatDef {
 
 const stats: StatDef[] = [
   { value: '0ms', numericEnd: 0, suffix: 'ms', label: 'Cloud Latency', color: 'text-primary' },
-  { value: '2', numericEnd: 2, label: 'Inference Engines', color: 'text-secondary' },
+  { value: '4', numericEnd: 4, label: 'Inference Backends', color: 'text-secondary' },
   { value: '6', numericEnd: 6, label: 'HTP Versions (v68-v81)', color: 'text-primary' },
-  { value: '90+', numericEnd: 90, suffix: '+', label: 'GGUF Architectures', color: 'text-white' },
+  { value: '90+', numericEnd: 90, suffix: '+', label: 'GGUF + ONNX Architectures', color: 'text-white' },
   { value: 'Q4_K_M', label: 'Recommended Quantization', color: 'text-secondary' },
   { value: 'ARM64', label: 'Target Architecture', color: 'text-primary' },
 ];

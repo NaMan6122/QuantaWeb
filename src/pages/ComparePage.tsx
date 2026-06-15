@@ -21,8 +21,10 @@ const rows: Row[] = [
   { feature: 'Runs on Android', quantallm: 'yes', mlcllm: 'yes', llamacppAndroid: 'yes', ollama: 'no' },
   { feature: '100% Offline', quantallm: 'yes', mlcllm: 'yes', llamacppAndroid: 'yes', ollama: 'yes' },
   { feature: 'Hexagon NPU Support', quantallm: 'yes', mlcllm: 'no', llamacppAndroid: 'no', ollama: 'no' },
+  { feature: 'ONNX QNN NPU Support', quantallm: 'yes', mlcllm: 'no', llamacppAndroid: 'no', ollama: 'no' },
   { feature: 'GGUF Model Format', quantallm: 'yes', mlcllm: 'no', llamacppAndroid: 'yes', ollama: 'yes' },
-  { feature: 'ONNX Runtime', quantallm: 'partial', mlcllm: 'no', llamacppAndroid: 'no', ollama: 'no' },
+  { feature: 'ONNX Model Format', quantallm: 'yes', mlcllm: 'no', llamacppAndroid: 'no', ollama: 'no' },
+  { feature: 'Inference SDK', quantallm: 'yes', mlcllm: 'no', llamacppAndroid: 'no', ollama: 'no' },
   { feature: 'AIDL Cross-App API', quantallm: 'yes', mlcllm: 'no', llamacppAndroid: 'no', ollama: 'no' },
   { feature: 'ARM64 Optimized', quantallm: 'yes', mlcllm: 'yes', llamacppAndroid: 'yes', ollama: 'partial' },
   { feature: 'Streaming Output', quantallm: 'yes', mlcllm: 'yes', llamacppAndroid: 'yes', ollama: 'yes' },
@@ -50,11 +52,11 @@ export default function ComparePage() {
     <>
       <Helmet>
         <title>QuantaLLM vs MLC LLM vs llama.cpp vs Ollama — Feature Comparison</title>
-        <meta name="description" content="See how QuantaLLM compares to MLC LLM, llama.cpp Android, and Ollama across 12 feature categories including Hexagon NPU, ONNX, and AIDL support." />
+        <meta name="description" content="See how QuantaLLM compares to MLC LLM, llama.cpp Android, and Ollama across 14 feature categories including ONNX QNN NPU, Hexagon NPU, AIDL, and SDK support." />
         <link rel="canonical" href="https://quanta-web-pi.vercel.app/compare" />
         <meta property="og:url" content="https://quanta-web-pi.vercel.app/compare" />
         <meta property="og:title" content="QuantaLLM vs MLC LLM vs llama.cpp vs Ollama — Feature Comparison" />
-        <meta property="og:description" content="12-category feature comparison of Android on-device LLM inference solutions. Hexagon NPU, ONNX, AIDL, and more." />
+        <meta property="og:description" content="14-category feature comparison of Android on-device LLM inference solutions. ONNX QNN NPU, Hexagon NPU, AIDL, SDK, and more." />
       </Helmet>
       <Navbar />
       <main className="relative min-h-screen bg-[#000000] pt-24 pb-20 px-6">

@@ -20,55 +20,137 @@ interface Feature {
 
 const features: Feature[] = [
   {
-    title: 'ONNX Runtime Integration',
+    title: 'Speculative Decoding',
     status: 'active',
-    eta: 'Final dev phase',
+    eta: 'Phase 1 — v2.1 / Phase 2 — v2.2',
     description:
-      'Full support for ONNX model format via ORT GenAI (v0.12.2). Load ONNX models alongside GGUF — same app, dual engine architecture, hot-swappable at runtime.',
+      'Improve token generation throughput by 1.3-2.5x using speculative decoding. Phase 1 (N-gram self-speculation) requires no extra model and targets 1.3-1.5x speedup. Phase 2 (draft model speculation) pairs a 0.5B-1B draft model for 1.8-2.5x speedup.',
     details: [
-      'CPU Execution Provider live on ARM64 with NEON vectorization',
-      'Directory-based model scanning for .onnx + genai_config.json bundles',
-      'Autoregressive token generation with built-in KV-cache management',
-      'QNN Execution Provider (Hexagon offload) in integration — Phase 2',
+      'N-gram self-speculation via ngram-mod + ngram-simple — no additional model download',
+      'Phase 2: paired draft model (e.g., Llama-3.2-1B for Llama 3.x) with auto-disable if acceptance rate drops below 40%',
+      'Preserves identical output quality — verified via byte-for-byte equivalence tests',
+      '<10MB memory overhead for Phase 1, auto-fallback to standard decoding',
     ],
   },
   {
-    title: 'QNN Execution Provider (ONNX + Hexagon)',
+    title: 'Model Hub — In-App Downloader',
     status: 'active',
-    eta: 'Phase 2 — post ONNX launch',
+    eta: 'v2.1 target',
     description:
-      'Qualcomm Neural Network (QNN) EP for ONNX Runtime will offload graph operations to the Hexagon Tensor Processor on Snapdragon SoCs. This gives ONNX models the same NPU advantage currently available to GGUF via the GGML Hexagon backend.',
+      'Browse, filter, and download GGUF and ONNX models directly from HuggingFace — no file manager, no browser. Curated model browser with size and compatibility checks.',
     details: [
-      'Graph-level partitioning: supported ops go to HTP, rest falls back to CPU EP',
-      'Targets Snapdragon 8 Gen 2, Gen 3, and Snapdragon Elite',
-      'Expected 2–4× throughput improvement over CPU-only ONNX execution',
-      'Requires Qualcomm QNN SDK — bundled in the app, no user setup',
+      'HuggingFace Hub search with GGUF + ONNX tag filter and quantization filters (Q4_K_M, Q8_0, etc.)',
+      'Device fit indicator: "Fits in RAM" / "May be slow" / "Too large" based on SoC + RAM',
+      'Background download manager with progress, pause/resume, and notifications',
+      'Auto-scan of downloaded models into the library',
     ],
   },
   {
-    title: 'In-App Model Downloader',
+    title: 'Preset Profiles',
     status: 'soon',
-    eta: 'v1.4 target',
+    eta: 'v2.1 target',
     description:
-      'Browse and download GGUF models directly from within QuantaLLM — no file manager, no browser. Search HuggingFace repositories, preview size and quantization info, and download with progress tracking.',
+      'One-tap parameter presets ("Creative", "Precise", "Balanced", "Code") that configure all sampling parameters at once. Save custom presets with per-model defaults.',
     details: [
-      'HuggingFace Hub search with GGUF tag filter',
-      'File size preview and RAM compatibility check before download',
-      'Resumable downloads — safe across app restarts',
-      'Automatic placement in the scanned model directory',
+      'P0: Four built-in presets — Creative (temp 1.2), Balanced (temp 0.7), Precise (temp 0.3), Code (temp 0.2)',
+      'P1: Save custom named presets, per-model defaults, JSON import/export',
+      'Horizontal chip row in Playground with active preset highlighted and "Custom" shown on parameter deviation',
     ],
   },
   {
-    title: 'Developer API (AIDL v2)',
+    title: 'Context Window Visualizer',
     status: 'soon',
-    eta: 'Alongside Developer tier launch',
+    eta: 'v2.1 target',
     description:
-      'The second revision of the AIDL cross-app inference interface. Third-party apps bind to QuantaLLM as a background service and call inference without shipping their own model runtime.',
+      'Real-time visual indicator of context window consumption with color-coded progress bar, warnings at 80% usage, and per-turn token breakdown in chat mode.',
     details: [
-      'ILlamaInference v2 with async token streaming via IInferenceCallback',
-      'Model lifecycle management: load, unload, swap — from the client app',
-      'Permission-gated binding — user approves which apps can use the engine',
-      'Full integration guide and sample app in the docs',
+      'P0: Horizontal progress bar — Green (<50%), Yellow (50-80%), Red (>80%) with warning toast at 80%',
+      'P1: Segment visualization per turn, estimated turns remaining, auto-summarize suggestion',
+      'Built into the Chat screen as a thin bar below the top bar with pulsing animation at limit',
+    ],
+  },
+  {
+    title: 'Export & Share',
+    status: 'soon',
+    eta: 'v2.1 target',
+    description:
+      'Export chat sessions, inference outputs, and benchmark results in Markdown, JSON, or plain text — shared via Android\'s share sheet or saved to device storage.',
+    details: [
+      'P0: One-tap chat export as Markdown, single output as text, native share intent, copy to clipboard',
+      'P1: Direct save to storage, selective turn inclusion, metadata (model, settings, timestamps)',
+      'JSON export includes session_id, model, created_at, per-turn tokens and latency',
+    ],
+  },
+  {
+    title: 'Benchmarks Tab',
+    status: 'soon',
+    eta: 'v2.2 target',
+    description:
+      'Dedicated bottom nav tab for running standardized inference benchmarks across loaded models. Compare speed and quality metrics with visual charts.',
+    details: [
+      'Predefined benchmark suites: short Q&A, long-form, code, reasoning — with tokens/sec, TTFT, peak memory',
+      'Persistent results (last 50 runs) with bar/line chart comparisons',
+      'Custom prompts, perplexity-like quality scoring, JSON/CSV export',
+    ],
+  },
+  {
+    title: 'Prompt Playground — A/B Comparison',
+    status: 'soon',
+    eta: 'v2.2 target',
+    description:
+      'Side-by-side inference comparison tool for testing the same prompt with different settings or configurations. Rapid A/B testing for prompt engineering and parameter tuning.',
+    details: [
+      'P0: 2-panel split view with independent config slots, shared prompt, one-tap "Run Both"',
+      'Diff highlighting to show where outputs diverge between configurations',
+      'P1: 4-panel comparison mode (2x2 on tablets), comparison history, thumbs up/down rating',
+    ],
+  },
+  {
+    title: 'Voice Mode',
+    status: 'planned',
+    eta: 'v2.2 target',
+    description:
+      'Speech-to-text input and text-to-speech output for hands-free LLM interaction. Built on Android\'s SpeechRecognizer and TextToSpeech engines.',
+    details: [
+      'P0: Mic button in chat bar, offline speech recognition, TTS playback with waveform animation',
+      'P1: Continuous walkie-talkie mode, language selection, streaming sentence-by-sentence TTS',
+      'P2: Wake word ("Hey Quanta"), on-device Whisper integration, custom TTS voice',
+    ],
+  },
+  {
+    title: 'Batch Inference',
+    status: 'planned',
+    eta: 'v2.2 target',
+    description:
+      'Process multiple prompts sequentially and export results as CSV/JSON. Designed for researchers, content creators, and developers evaluating models on large prompt sets.',
+    details: [
+      'Import prompts via paste (newline-separated) or file (.txt/.csv) with progress bar and ETA',
+      'Template variables ({{variable}} syntax), retry failed prompts, settings lock per batch',
+      'Long-running batches survive screen-off via Service/WorkManager',
+    ],
+  },
+  {
+    title: 'RAG / Document Grounding',
+    status: 'planned',
+    eta: 'Research phase',
+    description:
+      'Load PDF, TXT, and Markdown documents as context for question-answering and summarization. Semantic retrieval over local files — no cloud, no upload.',
+    details: [
+      'P0: Import PDF/TXT/MD, chunk and index locally, prepend top-K relevant chunks to prompt',
+      'P1: Semantic search via on-device embeddings or TF-IDF with source attribution',
+      'Dedicated small GGUF embedding model for retrieval, multi-document cross-retrieval',
+    ],
+  },
+  {
+    title: 'API Server Mode',
+    status: 'planned',
+    eta: 'Research phase',
+    description:
+      'Expose the locally loaded model as an OpenAI-compatible REST API on the device. Other apps, scripts, and automation tools can use the on-device LLM via standard endpoints.',
+    details: [
+      'Lightweight HTTP server (Ktor/NanoHTTPD) on configurable port (default 8080)',
+      'OpenAI-compatible: POST /v1/completions, POST /v1/chat/completions, GET /v1/models with SSE',
+      'Optional bearer token auth, CORS headers, persistent notification while active',
     ],
   },
   {
@@ -76,25 +158,11 @@ const features: Feature[] = [
     status: 'planned',
     eta: 'Research phase',
     description:
-      'Extend inference to vision-language models (VLMs) such as LLaVA and Moondream. Users will be able to attach images to prompts and get on-device visual reasoning — no cloud, no upload.',
+      'Extend inference to vision-language models (VLMs) such as LLaVA and Moondream. Attach images to prompts for on-device visual reasoning — no cloud, no upload.',
     details: [
-      'Targeting LLaVA-1.5 and Moondream2 initially via llama.cpp multimodal support',
-      'Image encoding pipeline with CLIP visual encoder',
-      'Prompt template adaptation for image + text interleaved input',
+      'Targeting LLaVA-1.5 and Moondream2 via llama.cpp multimodal support',
+      'CLIP visual encoder pipeline for image processing',
       'On-device only — images never leave the device',
-    ],
-  },
-  {
-    title: 'Prompt Templates & System Presets',
-    status: 'planned',
-    eta: 'v1.5 target',
-    description:
-      'First-class prompt template management. Ship with built-in templates for common model families (LLaMA 3, Mistral, Phi-3, ChatML) and let users define and save custom system prompts.',
-    details: [
-      'Auto-detect chat template from GGUF metadata (Jinja2)',
-      'Manual override for models with missing or incorrect templates',
-      'Saveable system prompt presets per model',
-      'Community template sharing format (JSON export/import)',
     ],
   },
 ];
@@ -115,7 +183,7 @@ export default function RoadmapPage() {
     <>
       <Helmet>
         <title>Roadmap & Contact — QuantaLLM</title>
-        <meta name="description" content="See what's actively being built in QuantaLLM — ONNX Runtime, QNN acceleration, in-app model downloader, multimodal support, and more. Get in touch with the developer." />
+        <meta name="description" content="See what's next for QuantaLLM — in-app model downloader, multimodal vision, prompt templates, guardrails, and more. Get in touch with the developer." />
         <link rel="canonical" href="https://quanta-web-pi.vercel.app/roadmap" />
         <meta property="og:url" content="https://quanta-web-pi.vercel.app/roadmap" />
         <meta property="og:title" content="Roadmap & Contact — QuantaLLM" />
