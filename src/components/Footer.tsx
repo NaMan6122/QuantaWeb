@@ -9,7 +9,7 @@ export default function Footer() {
           <div className="col-span-1">
             <div className="text-xl font-bold text-white mb-6 uppercase tracking-tighter font-headline">QuantaLLM</div>
             <p className="text-on-surface-variant max-w-xs text-sm leading-relaxed">
-              On-device LLM inference for Android. Private by design. Powered by llama.cpp.
+              On-device LLM inference for Android. Private by design. Powered by llama.cpp + ONNX Runtime.
             </p>
           </div>
 
@@ -94,7 +94,7 @@ export default function Footer() {
             </Link>
           </div>
           <div className="flex gap-8">
-            <span className="text-on-surface-variant text-[10px] font-mono uppercase tracking-[0.2em] font-bold">v1.3.0 Live</span>
+            <span className="text-on-surface-variant text-[10px] font-mono uppercase tracking-[0.2em] font-bold">v2.0.0 Live</span>
             <span className="text-on-surface-variant text-[10px] font-mono uppercase tracking-[0.2em] font-bold">Cloud Latency: 0ms</span>
           </div>
         </div>

@@ -20,7 +20,7 @@ export default function Hero() {
     }),
   };
 
-  const poweredBy = ['llama.cpp', 'Hexagon DSP', 'ONNX Runtime (Soon)', 'ARM64'];
+  const poweredBy = ['llama.cpp', 'Hexagon DSP', 'ONNX Runtime', 'QNN NPU'];
 
   const steps = [
     { icon: Cpu, label: 'Load Model', desc: 'Pick any GGUF or ONNX model' },
@@ -45,8 +45,8 @@ export default function Hero() {
             animate="visible"
             className="font-headline text-5xl md:text-7xl font-bold tracking-tighter leading-[0.95] mb-4"
           >
-            On-Device LLM Inference{' '}
-            <span className="text-on-surface-variant">for Android</span>
+            Run AI on Your Android.{' '}
+            <span className="text-on-surface-variant">Offline. Private. Free.</span>
           </motion.h1>
 
           {/* Consumer-facing value line — static, always visible, targets layman search queries */}
@@ -109,8 +109,8 @@ export default function Hero() {
             className="font-body text-lg text-on-surface-variant max-w-xl mb-8 leading-relaxed"
           >
             QuantaLLM runs large language models entirely on your phone — even in airplane mode.
-            Powered by llama.cpp with Snapdragon Hexagon NPU acceleration and ONNX
-            Runtime support (coming soon). Zero cloud, zero tracking, zero compromise.
+            Powered by llama.cpp and ONNX Runtime with Snapdragon Hexagon NPU and QNN
+            acceleration. Zero cloud, zero tracking, zero compromise.
           </motion.p>
 
           {/* Powered by badges */}
@@ -143,12 +143,12 @@ export default function Hero() {
             className="flex flex-wrap gap-4 mb-4"
           >
             <motion.a
-              href="https://github.com/NaMan6122/QuantaLLM-Releases/releases/download/v1.3.0/QuantaLLM-v1.3.0.apk"
+              href="https://github.com/NaMan6122/QuantaLLM-Releases/releases/download/v2.0.0/QuantaLLM-v2.0.0.apk"
               whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
               className="thermal-gradient text-black px-8 py-4 rounded-lg text-lg font-bold font-headline flex items-center gap-2 group transition-all"
             >
-              Download v1.3.0
+              Download v2.0.0
               <Download className="w-5 h-5" />
             </motion.a>
             <Link

@@ -39,7 +39,7 @@ export default function CTA() {
             className="flex flex-col gap-3 items-center"
           >
             <motion.a
-              href="https://github.com/NaMan6122/QuantaLLM-Releases/releases/download/v1.3.0/QuantaLLM-v1.3.0.apk"
+              href="https://github.com/NaMan6122/QuantaLLM-Releases/releases/download/v2.0.0/QuantaLLM-v2.0.0.apk"
               whileHover={{ scale: 1.05, y: -4 }}
               whileTap={{ scale: 0.95 }}
               className="w-64 py-5 rounded-xl font-bold font-headline text-xl flex items-center justify-center gap-3 transition-all thermal-gradient text-black"
@@ -48,7 +48,7 @@ export default function CTA() {
               Download APK
             </motion.a>
             <span className="text-[10px] text-on-surface-variant font-mono uppercase tracking-widest font-bold">
-              v1.3.0 · Android 12+ · ARM64
+              v2.0.0 · Android 12+ · ARM64
             </span>
           </motion.div>
 
