@@ -39,19 +39,21 @@
         "availability": "https://schema.org/InStock"
       },
       "url": "https://quanta-web-pi.vercel.app",
-      "downloadUrl": "https://github.com/NaMan6122/QuantaLLM-Releases/releases/download/v1.3.0/QuantaLLM-v1.3.0.apk",
-      "softwareVersion": "1.3.0",
-      "dateModified": "2026-05-17",
+      "downloadUrl": "https://github.com/NaMan6122/QuantaLLM-Releases/releases/download/v2.0.0/QuantaLLM-v2.0.0.apk",
+      "softwareVersion": "2.0.0",
+      "dateModified": "2026-06-15",
       "featureList": [
         "100% offline AI inference — no internet required",
         "Works in airplane mode",
         "Zero data collection and zero cloud connectivity",
-        "Snapdragon Hexagon NPU acceleration",
-        "90+ GGUF model architectures (Llama, Mistral, Phi, Gemma, Qwen)",
-        "Real-time token streaming",
-        "AIDL cross-app inference API",
+        "Snapdragon Hexagon NPU + QNN NPU acceleration",
+        "90+ GGUF & ONNX model architectures (Llama, Mistral, Phi, Gemma, Qwen)",
+        "Real-time token streaming with live metrics",
+        "AIDL cross-app inference API + QuantaLLM SDK",
         "ARM64 optimized with SIMD extensions",
-        "Full parameter control (temperature, top-k, top-p)"
+        "Full parameter control (temperature, top-k, top-p, min-p, penalties, seed)",
+        "Inference analytics with interactive speed charts",
+        "ONNX Runtime with CPU and QNN execution providers"
       ],
       "author": {
         "@type": "Person",
@@ -61,13 +63,116 @@
     }
     </script>
 
-    <!-- Structured Data: WebSite -->
+    <!-- Structured Data: WebSite with SearchAction -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "QuantaLLM",
-      "url": "https://quanta-web-pi.vercel.app"
+      "url": "https://quanta-web-pi.vercel.app",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://quanta-web-pi.vercel.app/faq?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <!-- Structured Data: Organization (entity signals for AI citation) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "QuantaLLM",
+      "url": "https://quanta-web-pi.vercel.app",
+      "logo": "https://quanta-web-pi.vercel.app/favicon.svg",
+      "description": "Open-source Android application for 100% offline, on-device AI inference. No cloud, no tracking, no internet required.",
+      "sameAs": [
+        "https://github.com/NaMan6122/QuantaLLM-Releases",
+        "https://github.com/NaMan6122/QuantaLLM-SDK"
+      ],
+      "founder": {
+        "@type": "Person",
+        "name": "Naman Gupta",
+        "url": "https://github.com/NaMan6122",
+        "sameAs": [
+          "https://github.com/NaMan6122"
+        ]
+      }
+    }
+    </script>
+
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is QuantaLLM?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "QuantaLLM is an Android application that lets you run large language models entirely on your device with no internet connection required. It leverages the Qualcomm AI Engine and Hexagon NPU to deliver fast, private, on-device inference for a wide range of open-weight models."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is QuantaLLM really 100% offline?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Once you have downloaded a model, all inference happens locally on your device hardware. No data is ever sent to external servers, and the app requires zero network connectivity to generate responses. You can even enable airplane mode and everything works perfectly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What Android version do I need to run QuantaLLM?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "QuantaLLM requires Android 12 (API 31) or later. Android 13+ is recommended for the best experience, as newer OS versions provide improved memory management that benefits on-device inference workloads."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What devices work best with QuantaLLM?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Devices with Qualcomm Snapdragon 8 Gen 2 or newer processors deliver the best experience thanks to their powerful Hexagon NPU. Flagship phones like the Samsung Galaxy S24 Ultra, OnePlus 12, and Xiaomi 14 Pro are excellent choices. Devices with at least 8 GB of RAM are recommended."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What AI models does QuantaLLM support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "QuantaLLM supports 90+ open-weight model architectures in GGUF format including Llama 3, Mistral, Phi-3, Gemma 2, Qwen 2, and many more. Q2 through Q8 quantization levels are supported."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How fast is AI inference on Android with QuantaLLM?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "On a Snapdragon 8 Gen 3 device with a 7B Q4 model, you can expect 12-15 tokens per second for generation. Prompt processing typically runs at 100-300+ tokens per second. Smaller models on newer hardware can exceed 40 tokens per second."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can other apps use QuantaLLM for AI inference?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. QuantaLLM exposes an AIDL (Android Interface Definition Language) service that other apps can bind to for on-device inference. This allows third-party developers to integrate local LLM capabilities into their own apps without bundling a separate inference engine."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Hexagon NPU acceleration?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Hexagon NPU (Neural Processing Unit) is a dedicated AI accelerator built into Qualcomm Snapdragon chipsets. QuantaLLM offloads matrix operations to this hardware for dramatically faster inference compared to CPU-only execution, often achieving 2-5x speedup while using less power."
+          }
+        }
+      ]
     }
     </script>
   </head>
