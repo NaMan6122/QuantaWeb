@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { AnimatePresence, motion } from 'motion/react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import QuickCompare from './components/QuickCompare';
 import Features from './components/Features';
 import InferencePipeline from './components/InferencePipeline';
 import Stats from './components/Stats';
@@ -26,6 +27,7 @@ const NotFound = lazy(() => import('./pages/NotFound'));
 const RoadmapPage = lazy(() => import('./pages/RoadmapPage'));
 const TutorialPage = lazy(() => import('./pages/TutorialPage'));
 const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
+const DeveloperSuccessPage = lazy(() => import('./pages/DeveloperSuccessPage'));
 
 function LoadingSpinner() {
   return (
@@ -73,11 +75,10 @@ function LandingPage() {
         name: 'What is QuantaLLM?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'QuantaLLM is an Android application that lets you run large language models entirely on your device with no internet connection required. It leverages the Qualcomm AI Engine and Hexagon NPU to deliver fast, private, on-device inference for a wide range of open-weight models.',
+          text: 'QuantaLLM is an Android application that lets you run large language models entirely on your device with no internet connection required. It leverages llama.cpp, ONNX Runtime, and Qualcomm AI Engine with Hexagon NPU + QNN NPU to deliver fast, private, on-device inference for a wide range of open-weight models.',
         },
       },
       {
-        '@type': 'Question',
         name: 'Is it really 100% offline?',
         acceptedAnswer: {
           '@type': 'Answer',
@@ -150,14 +151,13 @@ function LandingPage() {
       },
       {
         '@type': 'Question',
-        name: 'What is Hexagon NPU acceleration?',
+        name: 'What is Hexagon NPU and QNN acceleration?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'The Hexagon NPU (Neural Processing Unit) is a dedicated AI accelerator built into Qualcomm Snapdragon chipsets. QuantaLLM offloads matrix operations to this hardware for dramatically faster inference compared to CPU-only execution, often achieving a 2–5x speedup while using less power.',
+          text: 'The Hexagon NPU is a dedicated AI accelerator in Qualcomm Snapdragon chipsets. QuantaLLM supports two NPU paths: the llama.cpp Hexagon backend for GGUF models (2–5x speedup) and the ONNX QNN Execution Provider for ONNX models via the Qualcomm AI Engine Direct SDK. Both deliver dramatically faster and more power-efficient inference than CPU-only execution.',
         },
       },
       {
-        '@type': 'Question',
         name: 'Will running AI on my phone drain the battery?',
         acceptedAnswer: {
           '@type': 'Answer',
@@ -177,7 +177,7 @@ function LandingPage() {
         name: 'Can other apps use QuantaLLM\'s inference?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Yes. QuantaLLM exposes an AIDL service that other apps can bind to for on-device inference. This allows third-party developers to integrate local LLM capabilities into their own apps without bundling a separate inference engine.',
+          text: 'Yes. QuantaLLM provides both an AIDL cross-app service and the QuantaLLM SDK for integrating on-device inference into third-party apps. The SDK offers a clean InferenceEngine interface with license validation, supporting llama.cpp and ONNX Runtime backends.',
         },
       },
       {
@@ -209,7 +209,7 @@ function LandingPage() {
         '@type': 'HowToStep',
         position: 1,
         name: 'Download QuantaLLM and a model',
-        text: 'Download the QuantaLLM APK and install it on your Android device (Android 12+). Then pick a GGUF or ONNX model from the in-app browser or import one from Hugging Face.',
+        text: 'Download the QuantaLLM APK and install it on your Android device (Android 12+). Then pick a GGUF or ONNX model from the in-app model scanner or import from Hugging Face.',
       },
       {
         '@type': 'HowToStep',
@@ -229,7 +229,7 @@ function LandingPage() {
   return (
     <PageWrapper>
       <Helmet>
-        <title>QuantaLLM — Run AI on Your Phone Without Internet | On-Device LLM for Android</title>
+        <title>QuantaLLM — Run AI on Android Offline, No Internet Needed | Free On-Device LLM</title>
         <meta name="description" content="Run AI on your Android phone with no internet. QuantaLLM runs large language models 100% offline — no cloud, no tracking, works in airplane mode. Free download. Powered by llama.cpp + Hexagon NPU." />
         <link rel="canonical" href="https://quanta-web-pi.vercel.app/" />
         <meta property="og:url" content="https://quanta-web-pi.vercel.app/" />
@@ -244,6 +244,7 @@ function LandingPage() {
       <Navbar />
       <main>
         <Hero />
+        <QuickCompare />
         <Stats />
         <Features />
         <InferencePipeline />
@@ -338,6 +339,14 @@ export default function App() {
             element={
               <PageWrapper>
                 <PrivacyPage />
+              </PageWrapper>
+            }
+          />
+          <Route
+            path="/developer/success"
+            element={
+              <PageWrapper>
+                <DeveloperSuccessPage />
               </PageWrapper>
             }
           />

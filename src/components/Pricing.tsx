@@ -3,10 +3,12 @@ import { Bolt, Group, LockOpen, Sliders, Sparkles, ShieldCheck, Layers, Cpu, Zap
 
 export default function Pricing() {
   const comparisonRows = [
-    { feature: "Inference Engine", community: "llama.cpp (ARM64)", developer: "llama.cpp + ONNX Runtime (soon)" },
+    { feature: "Inference Engine", community: "llama.cpp (ARM64)", developer: "llama.cpp + ONNX Runtime (CPU + QNN)" },
     { feature: "Model Format", community: "GGUF (Q2–Q8)", developer: "GGUF + ONNX" },
-    { feature: "Hardware Acceleration", community: "CPU NEON/dotprod", developer: "CPU + Hexagon NPU (Snapdragon)" },
-    { feature: "Cross-App API", community: "—", developer: "AIDL Service (ILlamaInference)" },
+    { feature: "Hardware Acceleration", community: "CPU NEON/dotprod", developer: "CPU + Hexagon NPU + QNN NPU" },
+    { feature: "Cross-App API", community: "—", developer: "AIDL Service + Inference SDK" },
+    { feature: "SDK Modules", community: "—", developer: "quantallm-core, quantallm-llamacpp, quantallm-onnx" },
+    { feature: "License Validation", community: "—", developer: "HMAC-signed license key with tiering" },
     { feature: "Context Window", community: "Auto-detect (up to 4096)", developer: "Configurable + KV cache control" },
     { feature: "Thread Config", community: "1–12 threads", developer: "1–12 + Hexagon NDEV/NHVX tuning" },
     { feature: "Chat Sessions", community: "Unlimited", developer: "Unlimited + KV cache persistence" },
@@ -17,7 +19,7 @@ export default function Pricing() {
     <section id="pricing" className="py-32 px-6 md:px-12 max-w-[1440px] mx-auto">
       <header className="mb-24 text-center">
         <div className="inline-block px-3 py-1 rounded-sm bg-surface-container-highest text-primary font-mono text-[10px] tracking-[0.2em] uppercase mb-6 font-bold">
-          Download v1.3.0
+          Download v2.0.0
         </div>
         <h2 className="text-6xl md:text-7xl font-bold font-headline tracking-tighter mb-8 leading-[0.9]">
           BUILT FOR<br />
@@ -39,7 +41,7 @@ export default function Pricing() {
           <div>
             <div className="mb-12">
               <h3 className="text-3xl font-headline font-bold mb-2 uppercase tracking-tighter">Community</h3>
-              <p className="text-on-surface-variant text-[10px] font-bold uppercase tracking-[0.2em]">v1.3.0 — Free</p>
+              <p className="text-on-surface-variant text-[10px] font-bold uppercase tracking-[0.2em]">v2.0.0 — Free</p>
             </div>
             <ul className="space-y-6 mb-12">
               <li className="flex items-center gap-4 text-on-surface-variant group-hover:text-white transition-colors">
@@ -69,10 +71,10 @@ export default function Pricing() {
             </ul>
           </div>
           <a
-            href="https://github.com/NaMan6122/QuantaLLM-Releases/releases/download/v1.3.0/QuantaLLM-v1.3.0.apk"
+            href="https://github.com/NaMan6122/QuantaLLM-Releases/releases/download/v2.0.0/QuantaLLM-v2.0.0.apk"
             className="block w-full py-4 border border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary transition-all font-headline font-bold uppercase tracking-[0.2em] text-xs text-center rounded"
           >
-            Download v1.3.0 APK
+            Download v2.0.0 APK
           </a>
         </motion.div>
 
@@ -84,7 +86,7 @@ export default function Pricing() {
           className="bg-surface-container p-12 flex flex-col justify-between relative overflow-hidden group"
         >
           <div className="absolute top-0 right-0 p-8">
-            <span className="bg-secondary/10 text-secondary px-3 py-1 text-[10px] font-bold tracking-[0.2em] uppercase rounded-sm">Coming Soon</span>
+            <span className="bg-secondary/10 text-secondary px-3 py-1 text-[10px] font-bold tracking-[0.2em] uppercase rounded-sm">v1.0.0</span>
           </div>
           <div>
             <div className="mb-12">
@@ -92,7 +94,7 @@ export default function Pricing() {
               <p className="text-secondary text-[10px] font-bold uppercase tracking-[0.2em]">Integrate · Build · Deploy</p>
             </div>
             <p className="text-on-surface-variant text-sm leading-relaxed mb-8">
-              Embed QuantaLLM's inference engine directly into your own Android app. Generate responses, stream tokens, and run local AI — all powered by the same llama.cpp backend, exposed via a clean AIDL service interface.
+              Embed QuantaLLM's inference engine directly into your own Android app via the QuantaLLM SDK. Generate responses, stream tokens, and run local AI — powered by llama.cpp and ONNX Runtime, exposed via a clean AIDL service interface.
             </p>
             <ul className="space-y-6 mb-12">
               <li className="flex items-center gap-4">
@@ -122,10 +124,20 @@ export default function Pricing() {
             </ul>
           </div>
           <a
-            href="mailto:namang2510@gmail.com"
+            href="https://checkout.dodopayments.com/buy/pdt_0Nh7HvX8q2xjSvUAgHUmh?redirect_url=https://quanta-web-pi.vercel.app/developer/success"
+            target="_blank"
+            rel="noopener noreferrer"
             className="thermal-gradient block w-full py-4 text-black font-headline font-bold uppercase tracking-[0.2em] text-xs shadow-2xl text-center rounded"
           >
-            Get in Touch
+            Buy Developer Tier — $24.99
+          </a>
+          <a
+            href="https://github.com/NaMan6122/QuantaLLM-SDK"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block w-full mt-2 py-3 text-center text-xs text-on-surface-variant hover:text-primary transition-colors font-mono"
+          >
+            Explore the SDK first on GitHub →
           </a>
         </motion.div>
       </div>
