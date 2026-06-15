@@ -59,6 +59,7 @@ function PageWrapper({ children }: { children: React.ReactNode }) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+      className="overflow-x-hidden"
     >
       {children}
     </motion.div>
@@ -242,7 +243,7 @@ function LandingPage() {
         <script type="application/ld+json">{JSON.stringify(howToSchema)}</script>
       </Helmet>
       <Navbar />
-      <main>
+      <main className="overflow-x-hidden">
         <Hero />
         <QuickCompare />
         <Stats />

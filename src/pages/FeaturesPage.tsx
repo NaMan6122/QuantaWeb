@@ -601,7 +601,7 @@ export default function FeaturesPage() {
           <Suspense fallback={null}>
             <DataStreamBg />
           </Suspense>
-          <div className="absolute top-1/3 left-1/3 w-[500px] h-[500px] bg-primary/8 rounded-full blur-[140px] -z-10" />
+          <div className="absolute top-1/3 left-1/3 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-primary/8 rounded-full blur-[140px] -z-10" />
 
           <div className="max-w-[1440px] mx-auto text-center">
             <motion.div

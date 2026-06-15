@@ -33,7 +33,7 @@ export default function Hero() {
       <Suspense fallback={null}>
         <NeuralMeshBackground />
       </Suspense>
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] -z-10 animate-pulse" />
+      <div className="absolute top-1/4 left-1/4 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-primary/10 rounded-full blur-[120px] -z-10 animate-pulse" />
 
       <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         {/* Left column */}
