@@ -27,10 +27,10 @@ import {
   Layers,
   ChevronRight,
   WifiOff,
-  Bell,
   BarChart3,
   ToggleRight,
   Heading,
+  Download,
   type LucideIcon,
 } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
@@ -415,7 +415,7 @@ function FallbackChain() {
   const inView = useInView(ref, { once: true, amount: 0.5 });
 
   const nodes = [
-    { label: 'Hexagon DSP', sub: 'NPU Offload', accent: true },
+    { label: 'QNN / Hexagon', sub: 'NPU Offload', accent: true },
     { label: 'CPU + mmap', sub: 'Memory-Mapped', accent: false },
     { label: 'CPU', sub: 'Standard', accent: false },
   ];
@@ -513,7 +513,7 @@ function StreamingVisual() {
       <div className="grid grid-cols-3 gap-4">
         {[
           { label: 'Tokens/sec', value: tokenCount > 0 ? `${tps.toFixed(1)} t/s` : 'idle' },
-          { label: 'Backend', value: 'Hexagon NPU' },
+          { label: 'Backend', value: 'Auto (4 backends)' },
           { label: 'Memory', value: '1.8 GB' },
         ].map((m) => (
           <div key={m.label} className="bg-surface-container rounded-lg p-3 text-center border border-white/5">
@@ -650,7 +650,7 @@ export default function FeaturesPage() {
             >
               {[
                 { value: 90, suffix: '+', label: 'Model Architectures' },
-                { value: 3, suffix: '', label: 'Inference Backends' },
+                { value: 4, suffix: '', label: 'Inference Backends' },
                 { value: 0, suffix: 'ms', label: 'Cloud Latency' },
                 { value: 6, suffix: '', label: 'HTP Versions' },
               ].map((s) => (
@@ -755,7 +755,7 @@ export default function FeaturesPage() {
               <SectionTitle
                 icon={Gauge}
                 eyebrow="Performance"
-                title="Three Inference Backends"
+                title="Four Inference Backends"
                 subtitle="QuantaLLM automatically selects the fastest available backend for your hardware, with graceful fallback at every level."
               />
 
@@ -827,7 +827,7 @@ export default function FeaturesPage() {
                   </motion.div>
                 </MagneticCard>
 
-                {/* ONNX Backend */}
+                {/* ONNX CPU Backend */}
                 <MagneticCard>
                   <motion.div
                     variants={fadeUp}
@@ -838,17 +838,50 @@ export default function FeaturesPage() {
                         <Box className="w-5 h-5 text-secondary" />
                       </div>
                       <div>
-                        <h3 className="font-headline text-lg font-bold">ONNX Runtime</h3>
+                        <h3 className="font-headline text-lg font-bold">ONNX Runtime (CPU)</h3>
                         <p className="text-xs text-on-surface-variant font-mono">Dual Engine Architecture</p>
                       </div>
                     </div>
                     <p className="font-body text-on-surface-variant text-sm leading-relaxed mb-4">
-                      Load ONNX models via ORT GenAI with CPU Execution Provider. QNN EP planned for
-                      future NPU acceleration. Switch engines without recompile.
+                      Load ONNX models via ORT GenAI with CPU Execution Provider. ARM64 NEON vectorized
+                      inference alongside llama.cpp. Switch engines without recompile.
                     </p>
                     <div className="flex flex-wrap gap-2">
-                      {['ORT GenAI', 'CPU EP', 'QNN EP (Planned)'].map((f) => (
+                      {['ORT GenAI', 'NEON', 'CPU EP'].map((f) => (
                         <span key={f} className="text-[10px] font-mono text-secondary/70 border border-secondary/20 rounded px-2 py-0.5">
+                          {f}
+                        </span>
+                      ))}
+                    </div>
+                  </motion.div>
+                </MagneticCard>
+
+                {/* ONNX QNN Backend */}
+                <MagneticCard>
+                  <motion.div
+                    variants={fadeUp}
+                    className="bg-surface-container rounded-xl p-7 border border-primary/20 hover:border-primary/40 transition-colors"
+                  >
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="w-11 h-11 rounded-xl bg-primary/15 flex items-center justify-center">
+                        <Cpu className="w-5 h-5 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="font-headline text-lg font-bold text-primary">ONNX QNN (NPU)</h3>
+                        <p className="text-xs text-on-surface-variant font-mono">Qualcomm AI Engine Direct</p>
+                      </div>
+                      <span className="ml-auto text-xs font-headline font-bold text-primary border border-primary/30 rounded-full px-3 py-1 uppercase tracking-wider">
+                        NPU Offload
+                      </span>
+                    </div>
+                    <p className="font-body text-on-surface-variant text-sm leading-relaxed mb-4">
+                      Qualcomm Neural Network (QNN) Execution Provider offloads ONNX graph operations
+                      to the Hexagon Tensor Processor. Graph-level partitioning — supported ops go to
+                      HTP, rest falls back to CPU EP.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {['QNN SDK', 'HTP v68-v81', '2-4x Speedup'].map((f) => (
+                        <span key={f} className="text-[10px] font-mono text-primary/70 border border-primary/20 rounded px-2 py-0.5">
                           {f}
                         </span>
                       ))}
@@ -936,8 +969,8 @@ export default function FeaturesPage() {
           <SectionTitle
             icon={Code2}
             eyebrow="Developer"
-            title="Cross-App LLM in 30 Minutes"
-            subtitle="Expose QuantaLLM's inference engine to any Android app via AIDL IPC. No native code, no ML libraries, no model bundling required."
+            title="QuantaLLM SDK — Inference in Your App"
+            subtitle="Embed on-device LLM inference into any Android app via the QuantaLLM SDK and AIDL IPC. No native code, no ML libraries, no model bundling required."
           />
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
@@ -1155,15 +1188,15 @@ export default function FeaturesPage() {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <motion.a
-                href="https://github.com/NaMan6122/QuantaLLM-Releases/releases/download/v1.3.0/QuantaLLM-v1.3.0.apk"
+                href="https://github.com/NaMan6122/QuantaLLM-Releases/releases/download/v2.0.0/QuantaLLM-v2.0.0.apk"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 className="thermal-gradient text-black px-8 py-4 rounded-lg text-lg font-bold font-headline flex items-center gap-2"
               >
-                Coming Soon
-                <Bell className="w-5 h-5" />
+                Download v2.0.0
+                <Download className="w-5 h-5" />
               </motion.a>
               <Link
                 to="/docs"
