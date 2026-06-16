@@ -109,7 +109,9 @@ export default function Stats() {
   return (
     <section className="relative py-24 px-6 md:px-12 border-y border-outline-variant/10 bg-black/40">
       <Suspense fallback={null}>
-        <GlobeBg />
+        <div className="hidden md:block">
+          <GlobeBg />
+        </div>
       </Suspense>
       <div
         ref={ref}
