@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Bolt, Group, LockOpen, Sliders, Sparkles, ShieldCheck, Layers, Cpu, Zap, Terminal, Webhook } from 'lucide-react';
+import { Bolt, Group, LockOpen, Sliders, Sparkles, ShieldCheck, Layers, Cpu, Zap, Terminal, Webhook, Code } from 'lucide-react';
 
 export default function Pricing() {
   const comparisonRows = [
@@ -124,21 +124,30 @@ export default function Pricing() {
             </ul>
           </div>
           <a
-            href="https://checkout.dodopayments.com/buy/pdt_0Nh7HvX8q2xjSvUAgHUmh?redirect_url=https://quanta-web-pi.vercel.app/developer/success"
+            href="https://checkout.dodopayments.com/buy/pdt_0Nh7HvX8q2xjSvUAgHUmh?redirect_url=https://quanta-web-pi.vercel.app/api/complete-purchase"
             target="_blank"
             rel="noopener noreferrer"
             className="thermal-gradient block w-full py-4 text-black font-headline font-bold uppercase tracking-[0.2em] text-xs shadow-2xl text-center rounded"
           >
             Buy Developer Tier — $24.99
           </a>
-          <a
-            href="https://github.com/NaMan6122/QuantaLLM-SDK"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block w-full mt-2 py-3 text-center text-xs text-on-surface-variant hover:text-primary transition-colors font-mono"
-          >
-            Explore the SDK first on GitHub →
-          </a>
+          <div className="mt-3 space-y-2">
+            <a
+              href="https://github.com/NaMan6122/QuantaLLM-SDK"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 w-full py-3 text-center text-xs text-secondary hover:text-secondary/90 transition-colors font-mono border border-secondary/20 bg-secondary/5 rounded"
+            >
+              <Code className="w-4 h-4" />
+              Explore SDK on GitHub
+            </a>
+            <a
+              href="/docs"
+              className="flex items-center justify-center gap-2 w-full py-3 text-center text-xs text-on-surface-variant hover:text-white transition-colors font-mono border border-outline-variant/20 bg-outline-variant/5 rounded"
+            >
+              View Integration Docs
+            </a>
+          </div>
         </motion.div>
       </div>
 
